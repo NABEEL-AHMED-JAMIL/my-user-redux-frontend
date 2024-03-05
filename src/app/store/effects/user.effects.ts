@@ -9,7 +9,7 @@ import { ActionTypes, FetchUserActionSuccess,
     UpdateUserActionFailed, DeleteUserActionSucces, 
     DeleteUserActionFailed } from "../actions";
 import { AlertService, SpinnerService } from "../../helpers";
-import { IUser, ApiCode, ApiResponse } from "../../models";
+import { ApiCode, ApiResponse } from "../../models";
 
 
 @Injectable()

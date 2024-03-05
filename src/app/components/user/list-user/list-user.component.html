@@ -1,0 +1,34 @@
+<nz-table #dataUsersTable
+    [nzSize]="'small'"
+    [nzData]="dataUsers"
+    [nzPaginationType]="'small'"
+    [nzShowPagination]="true"
+    [nzBordered]="true"
+    nzShowSizeChanger
+    [nzPageSizeOptions]="[10, 20, 30, 40, 50, 100]"
+    [nzNoResult]="'No Data'">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th style="width: 8%;text-align: center;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of dataUsersTable.data; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{data.uuid}} [{{data.firstName}} {{data.lastName}}]</td>
+            <td>{{data.username}}</td>
+            <td>{{data.age}}</td>
+            <td>QTR {{data.salary}}</td>
+            <td style="text-align: center;">
+                <a [routerLink]="" (click)="actionEvent(UPDATE_USERS, data)">Edit</a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a [routerLink]="" (click)="actionEvent(DELETE_USERS, data)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

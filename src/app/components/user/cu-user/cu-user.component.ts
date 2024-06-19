@@ -17,7 +17,7 @@ export class CuUserComponent implements OnInit {
 
     @Input()
     public actionType: any; // use for action type either add|edit
-    @Output()
+    @Input()
     public payload?: IUser; // use for edit payload
 
     public userForm?: FormGroup;

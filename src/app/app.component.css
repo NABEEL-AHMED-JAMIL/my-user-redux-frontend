@@ -46,4 +46,10 @@ nz-footer {
 .inner-content {
     height: auto;
     margin-bottom: 10px;
-  }
+}
+
+.header-tit {
+    color: white;
+    margin-top: -78px;
+    margin-left: 47px;
+}

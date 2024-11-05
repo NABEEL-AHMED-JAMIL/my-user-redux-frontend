@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -33,6 +32,7 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCommentModule } from 'ng-zorro-antd/comment';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
@@ -75,13 +75,14 @@ import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
     NzToolTipModule,
     NzStepsModule,
     NzCommentModule,
+    NzDatePickerModule,
     NzCollapseModule,
     NzPaginationModule,
     NzSkeletonModule,
-    NzCarouselModule 
+    NzCarouselModule
   ],
-  providers:[
-    { 
+  providers: [
+    {
       provide: NZ_I18N,
       useValue: en_US
     }

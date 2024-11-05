@@ -1,0 +1,131 @@
+<div *ngIf="data" style="margin-top: 20px;">
+    <nz-row style="margin-bottom: 10px;">
+        <nz-col [nzSpan]="12" style="text-align: left;">
+            <h3>Batch File Status</h3>
+        </nz-col>
+        <nz-col [nzSpan]="12" style="text-align: right;">
+            <!-- date filter -->
+            <nz-date-picker
+                [(ngModel)]="dateFilter"
+                (ngModelChange)="onDateChangeEvent($event)"
+                style="margin-right: 8px;">
+            </nz-date-picker>
+            <!-- back file -->
+            <button
+                nz-button
+                nzType="default"
+                nz-tooltip
+                nzTooltipTitle="Back"
+                (click)="backClicked()">
+                <i nz-icon nzType="arrow-left"></i>
+            </button>
+            <!-- upload file -->
+            <button
+                nz-button
+                nzType="default"
+                nz-tooltip
+                nzTooltipTitle="Upload Files"
+                (click)="showUploadModal()">
+                <i nz-icon nzType="upload"></i>
+           </button>
+           <!-- refresh -->
+            <button
+                nz-button
+                nzType="default"
+                nz-tooltip
+                nzTooltipTitle="Refresh"
+                (click)="refreshEvent()">
+                <i nz-icon nzType="reload"></i>
+            </button>
+        </nz-col>
+    </nz-row>
+    <!-- daily file show -->
+    <nz-table #dailyFile [nzData]="data" nzSize="small"
+        nzShowPagination nzShowSizeChanger
+        class="table-setting">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Request Id</th>
+                <th>Folder</th>
+                <th>Filename</th>
+                <th>Type</th>
+                <th>File Status</th>
+                <th>Status</th>
+                <th style="width: 115px;text-align: center;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let file of dailyFile?.data">
+                <td>{{file.id}}</td>
+                <td>{{file.requestId}}</td>
+                <td>{{file.folder}}</td>
+                <td>{{file.filename}}</td>
+                <td>{{file.type}}</td>
+                <td>{{file.fileStatus}}</td>
+                <td>{{file.status}}</td>
+                <td>
+                    <!-- Run File Button -->
+                    <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Run file"
+                        (click)="file.status !== 'Delete' && (file.fileStatus !== 'Queue' && file.fileStatus !== 'Running') ? runFileById(file.id) : null"
+                        [disabled]="file.status === 'Delete' || (file.fileStatus === 'Queue' || file.fileStatus === 'Running')">
+                        <i nz-icon nzType="play-circle"></i>
+                    </button>
+                    <!-- Audit Log File Button -->
+                    <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="View log file"
+                        (click)="file.status !== 'Delete' ? fetchFileAuditLog(file.id) : ''"
+                        [disabled]="file.status === 'Delete'">
+                        <i nz-icon nzType="file-search"></i>
+                    </button>
+                    <!-- Download File Button -->
+                    <button nz-button nzType="default" nzSize="small"  nz-tooltip nzTooltipTitle="Download file"
+                        (click)="downloadFileById(file.id, file.filename)">
+                        <i nz-icon nzType="download"></i>
+                    </button>
+                    <!-- Delete File Button -->
+                    <button nz-button nzType="default" nzSize="small" nz-tooltip nzTooltipTitle="Delete file"
+                        (click)="file.status !== 'Delete' ? deleteFileById(file.id) : null"
+                        [disabled]="file.status === 'Delete' || (file.fileStatus === 'Queue' || file.fileStatus === 'Running')">
+                        <i nz-icon nzType="close-circle"></i>
+                    </button>
+                </td>                                
+            </tr>
+        </tbody>
+    </nz-table>
+</div>
+<!-- show logs -->
+<nz-modal nzTitle="Audit Log File" [(nzVisible)]="isVisible"
+    (nzOnCancel)="handleAuditLogCancel()"
+    nzWidth="850"
+    [nzFooter]="null">
+    <ng-container *nzModalContent>
+        <div class="log-container">
+            <p *ngFor="let log of auditLogs">
+                {{ log.dateCreated }} :: {{ log.logsDetail }}
+            </p>
+        </div>
+    </ng-container>
+</nz-modal>
+<!-- upload modal file -->
+<nz-modal
+    nzTitle="Upload Files"
+    [(nzVisible)]="isUploadModalVisible" 
+    (nzOnCancel)="handleFileUploadCancel()"
+    [nzFooter]="null">
+    <ng-container *nzModalContent>
+        <nz-upload
+            nzType="drag"
+            [nzMultiple]="true"
+            [nzAction]="uploadUrl"
+            (nzChange)="handleChange($event)"
+            [nzShowUploadList]="false"
+            nzAccept=".csv, .parquet, .txt">
+            <p class="ant-upload-drag-icon"><span nz-icon nzType="inbox"></span></p>
+            <p class="ant-upload-text">Click or drag file to this area to upload</p>
+            <p class="ant-upload-hint">
+                Support for a single or bulk upload. Strictly prohibit from uploading company data or other banned files.
+                Support only [csv | json | parquet] file.
+            </p>
+        </nz-upload>
+    </ng-container>
+</nz-modal>

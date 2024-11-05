@@ -1,0 +1,58 @@
+<div style="margin-top: 15px;">
+    <nz-row nzGutter="16">
+        <!-- graph yam -->
+        <nz-col [nzSpan]="12">
+            <div class="content">
+                <h4 style="text-align: center;">
+                    Daily Total File Type Summary
+                </h4>
+                <div echarts theme="macarons"
+                    id="current_month_daily_count_by_type"
+                    style="height: 458px;"
+                    [options]="current_month_daily_count_by_type">
+                </div>
+            </div>
+        </nz-col>
+        <!-- detail yam -->
+        <nz-col [nzSpan]="12">
+            <nz-row nzGutter="16">
+                <nz-col [nzSpan]="12">
+                    <div class="content">
+                        <h4 style="text-align: center;">
+                            Today Statistics For File Type 
+                        </h4>
+                        <div echarts theme="macarons"
+                            id="today_count_by_type"
+                            style="height: 150px;"
+                            [options]="today_count_by_type">
+                        </div>
+                    </div>
+                </nz-col>
+                <nz-col [nzSpan]="12">
+                    <div class="content">
+                        <h4 style="text-align: center;">
+                            Daily Total File Summary
+                        </h4>
+                        <div echarts theme="macarons"
+                            id="current_month_daily_count" 
+                            style="height: 150px;"
+                            [options]="current_month_daily_count">
+                        </div>
+                    </div>
+                </nz-col>
+                <nz-col [nzSpan]="24">
+                    <div class="content">
+                        <h4 style="text-align: center;">
+                            Daily Total File Status Summary
+                        </h4>
+                        <div echarts theme="macarons"
+                            id="current_month_daily_count_by_file_status" 
+                            style="height: 250px;"
+                            [options]="current_month_daily_count_by_file_status">
+                        </div>
+                    </div>
+                </nz-col>
+            </nz-row>
+        </nz-col>
+    </nz-row>
+</div>

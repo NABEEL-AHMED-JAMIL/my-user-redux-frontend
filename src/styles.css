@@ -1,10 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
 
-[nz-button] {
-    margin-bottom: 12px;
-  }
 
-  nz-button-group {
-    margin-bottom: 8px;
-    margin-right: 8px;
-  }
+.ant-table.ant-table-small .ant-table-tbody>tr>td,
+.ant-table.ant-table-small tfoot>tr>th,
+.ant-table.ant-table-small tfoot>tr>td {
+  padding: 0px 8px;
+}
+
+.th-centrail {
+  text-align: center;
+}
+
+.td-centrail {
+  text-align: center;
+}
+
+.table-setting {
+  font-size: 10px;
+  display: block;
+  overflow-x: auto;
+  white-space: pre;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.log-container {
+  max-height: 300px;
+  /* Set maximum height for scroll */
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  background-color: #1e1e1e;
+  /* Dark background similar to PuTTY */
+  color: #c0c0c0;
+  /* Light gray text color */
+  font-family: monospace;
+  /* Monospace font for terminal feel */
+  padding: 10px;
+  /* Padding for inner spacing */
+  border-radius: 4px;
+  /* Optional rounded corners */
+  border: 1px solid #3c3c3c;
+  /* Subtle border to define container */
+}
+
+.ant-modal-header {
+  padding: 10px 10px !important;
+  color: rgba(0, 0, 0, .85) !important;
+  background: #fff !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  border-radius: 2px 2px 0 0 !important;
+}
+
+.ant-modal-body {
+  padding: 1px !important;
+  font-size: 12px !important;
+  line-height: 1.5715 !important;
+  word-wrap: break-word !important;
+}
+
+.ant-btn-icon-only {
+  vertical-align: -2px !important;
+}
+
+.Open {
+  color: #FF4500; /* OrangeRed to signify opening price */
+}
+
+.High {
+  color: #228B22; /* ForestGreen to indicate high values */
+}
+
+.Low {
+  color: #DC143C; /* Crimson for low points, visually strong */
+}
+
+.Close {
+  color: #8A2BE2; /* BlueViolet for close to create a unique, subtle contrast */
+}
+
+.Volume {
+  color: #4682B4; /* SteelBlue for a balanced, cool tone */
+}
+
+.OpenInt {
+  color: #DAA520; /* GoldenRod for open interest, representing value */
+}

@@ -1,12 +1,22 @@
 <spinner dir="ltr"></spinner>
 <nz-layout class="layout">
     <nz-header>
-        <div class="logo">
-            <img src="../assets/img/loading.gif" id="logo-img" class="logo-img">
-            <h3 class="header-tit">Redux X</h3>
+        <div class="logo" routerLink="/dashboard">
+            <img src="../assets/img/loading.gif"
+                id="logo-img" class="logo-img">
+            <h3 class="header-tit">Run Tool</h3>
         </div>
+        <!-- Navigation Menu -->
+        <ul class="nav-menu">
+            <li id="stock-data">
+                <a routerLink="/stock-data">Stock AI</a>
+            </li>
+            <li id="face-id">
+                <a routerLink="/faceid">Face ID</a>
+            </li>
+        </ul>
     </nz-header>
     <nz-content>
-        <br>
+        <router-outlet></router-outlet>
     </nz-content>
 </nz-layout>

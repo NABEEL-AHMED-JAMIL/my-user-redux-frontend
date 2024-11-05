@@ -20,7 +20,7 @@ nz-header {
 }
 
 nz-content {
-    padding: 0 20px;
+    padding: 0 15px;
     margin-top: 64px;
 }
 
@@ -52,4 +52,23 @@ nz-footer {
     color: white;
     margin-top: -78px;
     margin-left: 47px;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-menu li {
+    display: inline-block;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
 }

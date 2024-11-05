@@ -1,1 +1,3 @@
-export * from './stock-data';
+export * from './api.service';
+export * from './stock-data.service';
+export * from './file-upload.service';

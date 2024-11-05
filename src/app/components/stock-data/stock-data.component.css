@@ -9,7 +9,7 @@
     width: 98%;
     overflow: auto;
     margin-top: 10px;
-    max-height: 750px;
+    max-height: 585px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -56,4 +56,7 @@ tr.highlight {
 .selected-row {
     background-color: #e6f7ff; /* Light blue for selected row */
 }
-  
+
+.stock-hight {
+    height: 105px;
+}

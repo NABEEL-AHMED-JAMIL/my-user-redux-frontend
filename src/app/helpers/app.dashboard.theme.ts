@@ -251,106 +251,54 @@ export class AppDashboardThemeService {
                     type: 'cross'
                 },
                 formatter: function (params) {
-                    const [candle, volume] = params;
+                    const candle = params[0];
                     return `
                         Date: ${candle.name}<br/>
                         Open: ${candle.data[1]}<br/>
                         High: ${candle.data[2]}<br/>
                         Low: ${candle.data[3]}<br/>
-                        Close: ${candle.data[4]}<br/>
-                        Volume: ${candle.data[5]}
-                    `;
+                        Close: ${candle.data[4]}`;
                 }
             },
-            grid: [
-                {
-                    top: '5%',
-                    left: '5%',
-                    right: '3%',
-                    bottom: 200
+            grid: {
+                top: '5%',
+                left: '5%',
+                right: '3%',
+                bottom: '33%'
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                axisLine: {
+                    onZero: false
                 },
-                {
-                    left: '5%',
-                    right: '3%',
-                    height: 100,
-                    bottom: 80
-                }
-            ],
-            xAxis: [
-                {
-                    type: 'category',
-                    boundaryGap: false,
-                    axisLine: {
-                        onZero: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    splitLine: {
-                        show: false
-                    },
-                    axisLabel: {
-                        show: true,
-                        formatter: value => new Date(value).toLocaleDateString()
-                    },
-                    min: 'dataMin',
-                    max: 'dataMax'
+                axisTick: {
+                    show: false
                 },
-                {
-                    type: 'category',
-                    gridIndex: 1,
-                    boundaryGap: false,
-                    axisLine: {
-                        onZero: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    splitLine: {
-                        show: false
-                    },
-                    axisLabel: {
-                        show: false
-                    },
-                    min: 'dataMin',
-                    max: 'dataMax'
-                }
-            ],
-            yAxis: [
-                {
-                    scale: true,
-                    splitArea: {
-                        show: true
-                    }
+                splitLine: {
+                    show: false
                 },
-                {
-                    scale: true,
-                    gridIndex: 1,
-                    splitNumber: 5,
-                    axisLine: {
-                        onZero: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    splitLine: {
-                        show: false
-                    },
-                    axisLabel: {
-                        show: false
-                    }
+                axisLabel: {
+                    show: true,
+                    formatter: value => new Date(value).toLocaleDateString()
+                },
+                min: 'dataMin',
+                max: 'dataMax'
+            },
+            yAxis: {
+                scale: true,
+                splitArea: {
+                    show: true
                 }
-            ],
+            },
             dataZoom: [
                 {
                     type: 'inside',
-                    xAxisIndex: [0, 1],
                     start: 10,
                     end: 100
                 },
                 {
                     show: true,
-                    xAxisIndex: [0, 1],
                     type: 'slider',
                     start: 10,
                     end: 100
@@ -358,7 +306,6 @@ export class AppDashboardThemeService {
             ],
             visualMap: {
                 show: false,
-                seriesIndex: 1,
                 dimension: 6,
                 pieces: [
                     {
@@ -380,28 +327,14 @@ export class AppDashboardThemeService {
                         borderColor: upBorderColor,
                         borderColor0: downBorderColor
                     },
-                    barWidth: '60%',
+                    barWidth: '40%',
                     encode: {
                         x: 0,
                         y: [1, 4, 3, 2]
                     }
-                },
-                {
-                    name: 'Volume',
-                    type: 'bar',
-                    xAxisIndex: 1,
-                    yAxisIndex: 1,
-                    itemStyle: {
-                        color: params => params.data[6] === 1 ? upColor : downColor
-                    },
-                    large: true,
-                    encode: {
-                        x: 0,
-                        y: 5
-                    }
                 }
             ]
-        };        
+        };
     } 
 
     public fillAreaPiecesStockPayload(data: any): EChartsOption {
@@ -438,7 +371,7 @@ export class AppDashboardThemeService {
                     symbol: 'none',
                     lineStyle: {
                         color: '#5470C6',
-                        width: 5
+                        width: 2
                     },
                     areaStyle: {},
                     data: data

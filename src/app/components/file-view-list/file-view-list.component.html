@@ -119,12 +119,12 @@
             [nzAction]="uploadUrl"
             (nzChange)="handleChange($event)"
             [nzShowUploadList]="false"
-            nzAccept=".csv, .parquet, .txt">
+            nzAccept=".csv, .txt">
             <p class="ant-upload-drag-icon"><span nz-icon nzType="inbox"></span></p>
             <p class="ant-upload-text">Click or drag file to this area to upload</p>
             <p class="ant-upload-hint">
                 Support for a single or bulk upload. Strictly prohibit from uploading company data or other banned files.
-                Support only [csv | json | parquet] file.
+                Support only [csv  | txt] file.
             </p>
         </nz-upload>
     </ng-container>

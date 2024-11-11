@@ -21,6 +21,7 @@ import {
   DashboardComponent,
   StockDataComponent,
   FaceidComponent,
+  ChatBootComponent,
   FileViewListComponent
 } from './components/index';
 
@@ -34,6 +35,7 @@ export const APP_COMPONENT = [
   DashboardComponent,
   StockDataComponent,
   FaceidComponent,
+  ChatBootComponent,
   FileViewListComponent
 ];
 

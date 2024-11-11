@@ -38,7 +38,7 @@
             </div>
         </div>
     </nz-col>
-    <nz-col [nzSpan]="10">
+    <nz-col [nzSpan]="12">
         <!-- dashboard -->
         <div class="content">
             <h4 style="text-align: center;">
@@ -84,16 +84,33 @@
         <div class="content">
             <h4 *ngIf="fileInfo" style="text-align: center;">
                 <b>File={{fileInfo.filename}} & Status={{fileInfo.fileStatus}} & Type={{fileInfo.type}}</b>
+                <select name="action" id="action" (change)="onActionChange($event)"
+                    style="float: right;">
+                    <option value="statistics">Statistics</option>
+                    <option value="text">Text</option>
+                    <option value="ai_reviwe">AI Reviwe</option>
+                </select>
             </h4>
             <hr>
-            <div echarts theme="macarons"
+            <div *ngIf="selectedOption === 'statistics'"
+                echarts theme="macarons"
                 id="stock_exchange_data"
                 style="height: 250px;"
                 [options]="stock_exchange_data">
             </div>
+            <div *ngIf="selectedOption === 'text'"
+                class="scrollable-container">
+                Date,Open,High,Low,Close,Volume,OpenInt
+                <p *ngFor="let row of stockData.dataView.rows">
+                    {{ row.text }}
+                </p>
+            </div>
+            <div *ngIf="selectedOption === 'ai_reviwe'">
+                pa
+            </div>
         </div>
     </nz-col>
-    <nz-col [nzSpan]="8">
+    <nz-col [nzSpan]="6">
         <!-- open -->
         <div class="content">
             <h4 style="text-align: center;">

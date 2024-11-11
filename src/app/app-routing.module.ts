@@ -5,7 +5,8 @@ import {
   DashboardComponent,
   StockDataComponent,
   FaceidComponent,
-  FileViewListComponent
+  FileViewListComponent,
+  ChatBootComponent
 } from './components/index';
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'faceid',
     component: FaceidComponent
+  },
+  {
+    path: 'ask-me',
+    component: ChatBootComponent
   },
   {
     path: 'file/view/list',

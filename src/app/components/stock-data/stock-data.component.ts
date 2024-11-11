@@ -22,6 +22,7 @@ export class StockDataComponent implements OnInit {
     public fileInfo: IFileInfo;
     public stockData: IStockData;
     public summarys: any[] = [];
+    public selectedOption: any = 'statistics';
     // main dashboard
     public stock_exchange_data: EChartsOption;
     public stock_open_graph: EChartsOption;
@@ -124,6 +125,10 @@ export class StockDataComponent implements OnInit {
                     this.appDashboardThemeService.initChart('stock_close_graph', this.stock_close_graph);           
                 })
             );
+    }
+
+    public onActionChange(event: Event): void {
+        this.selectedOption = (event.target as HTMLSelectElement).value;
     }
 
     private handleApiResponse(response: any, successCallback: Function): void {

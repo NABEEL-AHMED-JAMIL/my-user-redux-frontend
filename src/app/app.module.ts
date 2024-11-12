@@ -20,8 +20,6 @@ import {
 import {
   DashboardComponent,
   StockDataComponent,
-  FaceidComponent,
-  ChatBootComponent,
   FileViewListComponent
 } from './components/index';
 
@@ -34,8 +32,6 @@ export const APP_COMPONENT = [
   SpinnerComponent,
   DashboardComponent,
   StockDataComponent,
-  FaceidComponent,
-  ChatBootComponent,
   FileViewListComponent
 ];
 

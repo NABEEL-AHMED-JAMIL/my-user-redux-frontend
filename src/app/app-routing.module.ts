@@ -4,9 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   DashboardComponent,
   StockDataComponent,
-  FaceidComponent,
-  FileViewListComponent,
-  ChatBootComponent
+  FileViewListComponent
 } from './components/index';
 
 const routes: Routes = [
@@ -24,17 +22,9 @@ const routes: Routes = [
     component: StockDataComponent
   },
   {
-    path: 'faceid',
-    component: FaceidComponent
-  },
-  {
-    path: 'ask-me',
-    component: ChatBootComponent
-  },
-  {
     path: 'file/view/list',
     component: FileViewListComponent
-  },
+  }
 ];
 
 @NgModule({

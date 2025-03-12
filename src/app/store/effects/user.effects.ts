@@ -1,15 +1,40 @@
 import { Injectable } from "@angular/core";
 import { UserService } from '../../services/user.service';
-import { Actions, createEffect, ofType,  } from '@ngrx/effects';
-import { Observable, catchError, from, map, of, switchMap, tap } from "rxjs";
 import { Action } from "@ngrx/store";
-import { ActionTypes, FetchUserActionSuccess, 
-    FetchUserActionFailed, AddUserActionSucces, 
-    AddUserActionFailed, UpdateUserActionSucces, 
-    UpdateUserActionFailed, DeleteUserActionSucces, 
-    DeleteUserActionFailed } from "../actions";
-import { AlertService, SpinnerService } from "../../helpers";
-import { ApiCode, ApiResponse } from "../../models";
+import {
+    Actions,
+    createEffect,
+    ofType
+} from '@ngrx/effects';
+import {
+    from,
+    map,
+    of,
+    tap,
+    Observable,
+    catchError,
+    switchMap
+} from "rxjs";
+
+import {
+    ActionTypes,
+    FetchUserActionSuccess, 
+    FetchUserActionFailed,
+    AddUserActionSucces, 
+    AddUserActionFailed,
+    UpdateUserActionSucces, 
+    UpdateUserActionFailed,
+    DeleteUserActionSucces, 
+    DeleteUserActionFailed
+} from "../actions";
+import {
+    AlertService,
+    SpinnerService
+} from "../../helpers";
+import {
+    ApiCode,
+    ApiResponse
+} from "../../models";
 
 
 @Injectable()

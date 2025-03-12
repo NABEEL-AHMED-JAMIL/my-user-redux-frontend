@@ -96,10 +96,10 @@ export class UserEffects {
             return from(this.userService.updateUser(payload)).pipe(
                 map((res: ApiResponse) => {
                     if (res.status === ApiCode.SUCCESS) {
-                        this.alertService.showSuccess(res.message, ActionTypes.ADD_USERS);
+                        this.alertService.showSuccess(res.message, ActionTypes.UPDATE_USERS);
                         return new UpdateUserActionSucces(res.data);
                     } else if (res.status === ApiCode.ERROR) {
-                        this.alertService.showSuccess(res.message, ActionTypes.ADD_USERS);
+                        this.alertService.showSuccess(res.message, ActionTypes.UPDATE_USERS);
                         return new UpdateUserActionFailed(res.message);
                     }
                 }),

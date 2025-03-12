@@ -2,17 +2,17 @@ import { IUser } from '../../models/index';
 import { Actions, ActionTypes } from '../actions';
 
 // user state mean store
-export interface UserState  {
+export interface UserState {
     users: IUser[];
 }
 
 // create the empty state in store
-export const initialState: UserState  = {
+export const initialState: UserState = {
     users: []
 }
 
 // reducer
-export function userReducer(state = initialState, action: Actions): UserState  {
+export function userReducer(state = initialState, action: Actions): UserState {
     switch (action.type) {
         case ActionTypes.USERS_FETCHED_SUCCESS:
             return {

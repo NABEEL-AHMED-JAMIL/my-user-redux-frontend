@@ -21,7 +21,10 @@ import { userReducer } from './store/reducers';
 // user erffect
 import { UserEffects } from './store/effects';
 // compoenet
-import { CuUserComponent, ListUserComponent } from './components/index';
+import {
+  CuUserComponent,
+  ListUserComponent
+} from './components/index';
 
 
 export const APP_COMPONENT = [
@@ -61,8 +64,7 @@ export const APP_COMPONENT = [
       connectInZone: true // If set to true, the connection is established within the Angular zone
     }),
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

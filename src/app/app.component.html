@@ -2,8 +2,12 @@
 <nz-layout class="layout">
     <nz-header>
         <div class="logo">
-            <img src="../assets/img/loading.gif" id="logo-img" class="logo-img">
-            <h3 style="color: white;margin-top: -78px;margin-left: 47px;">Redux X</h3>
+            <img src="../assets/img/loading.gif"
+                id="logo-img"
+                class="logo-img">
+            <h3 style="color: white;margin-top: -78px;margin-left: 47px;">
+                Redux X
+            </h3>
         </div>
     </nz-header>
     <nz-content>
@@ -11,20 +15,8 @@
         <div class="inner-content">
             <div nz-row>
                 <div nz-col nzSpan="20">
-                    <h2>User List</h2>
-                </div>
-                <div nz-col nzSpan="4" style="text-align: end;">
-                    <nz-button-group>
-                        <button nz-button nzType="primary" nzDanger
-                            (click)="refresh()" style="width: 45px">
-                            <span nz-icon nzType="reload" nzTheme="outline"></span>
-                        </button>&nbsp;
-                        <button nz-button nzType="primary" nzBlock
-                            (click)="addUser()">New User</button>
-                    </nz-button-group>
                 </div>
             </div>
-            <list-user></list-user>
         </div>
     </nz-content>
 </nz-layout>

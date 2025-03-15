@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 [nz-button] {
-    margin-bottom: 12px;
-  }
+  margin-bottom: 12px;
+}
 
-  nz-button-group {
-    margin-bottom: 8px;
-    margin-right: 8px;
-  }
+nz-button-group {
+  margin-bottom: 8px;
+  margin-right: 8px;
+}

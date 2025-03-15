@@ -8,6 +8,7 @@ import { SpinnerComponent } from './spinner.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BidiModule } from '@angular/cdk/bidi';
+import { GraphQLModule } from './graphql.module';
 // module
 import { IconsProviderModule } from './icons-provider.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,12 +17,11 @@ import { NgZorroAntdModule } from './helpers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-// user reducer
-import { userReducer } from './store/reducers';
-// user erffect
-import { UserEffects } from './store/effects';
 // compoenet
 import {
+  ForgotComponent,
+  LoginComponent,
+  ResetComponent,
   CuAuthorComponent,
   ListAuthorComponent,
   CuBookComponent,
@@ -31,6 +31,9 @@ import {
 
 export const APP_COMPONENT = [
   SpinnerComponent,
+  ForgotComponent,
+  LoginComponent,
+  ResetComponent,
   CuAuthorComponent,
   ListAuthorComponent,
   CuBookComponent,
@@ -49,15 +52,12 @@ export const APP_COMPONENT = [
     AppRoutingModule,
     FormsModule,
     BidiModule,
+    GraphQLModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     IconsProviderModule,
     NgZorroAntdModule,
-    StoreModule.forRoot({
-      users: userReducer
-    }),
-    EffectsModule.forRoot([UserEffects]),
     // devtools
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -68,8 +68,7 @@ export const APP_COMPONENT = [
       connectInZone: true // If set to true, the connection is established within the Angular zone
     }),
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

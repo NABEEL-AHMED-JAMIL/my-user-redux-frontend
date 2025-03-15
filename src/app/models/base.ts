@@ -1,6 +1,9 @@
 /**
  * Model use to store the data model
  */
+export const ERROR:string = "ERROR";
+export const SUCCESS:string = "SUCCESS";
+
 export enum Role {
     USER,
     ADMIN
@@ -76,8 +79,18 @@ export interface IBaseEntityResponse {
     status: IEnum;
 }
 
-export interface IGQLResponse<T> {
+export interface IGQLResponse {
     status: IEnum;	    
     message: any;	    
-    data: T;
+    data: any;
+}
+
+export interface ITokenResponse {
+    firstName: string;
+    lastName: string;
+    email: string;
+    username: string;
+    role: Role;
+    image: string;
+    token: string;
 }

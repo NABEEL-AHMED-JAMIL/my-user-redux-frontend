@@ -21,13 +21,20 @@ import { userReducer } from './store/reducers';
 // user erffect
 import { UserEffects } from './store/effects';
 // compoenet
-import { CuUserComponent, ListUserComponent } from './components/index';
+import {
+  CuAuthorComponent,
+  ListAuthorComponent,
+  CuBookComponent,
+  ListBookComponent
+} from './components/index';
 
 
 export const APP_COMPONENT = [
   SpinnerComponent,
-  CuUserComponent,
-  ListUserComponent
+  CuAuthorComponent,
+  ListAuthorComponent,
+  CuBookComponent,
+  ListBookComponent
 ];
 
 @NgModule({

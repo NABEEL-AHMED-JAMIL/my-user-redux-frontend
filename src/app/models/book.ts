@@ -9,18 +9,18 @@ import {
 } from  './base';
 
 export interface IBookRequest extends IBaseEntityRequest {
-    isbn: string,
-    title: string,
-    price: number,
-    publisher: string,
-    publication: any,
-    language: Language,
-    category: Category,
-    format: Format,
-    description: any,
-    coverImg: any,
-    bookUrl: any,
-    note: any,
+    isbn?: string,
+    title?: string,
+    price?: number,
+    publisher?: string,
+    publication?: any,
+    language?: any,
+    category?: any,
+    format?: any,
+    description?: any,
+    coverImg?: any,
+    bookUrl?: any,
+    note?: any,
 }
 
 export interface IBookResponse extends IBaseEntityResponse {

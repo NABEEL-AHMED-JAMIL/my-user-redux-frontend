@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-
+/**
+ * @author Nabeel Ahmed
+ */
 @Component({
   selector: 'spinner',
   template: `

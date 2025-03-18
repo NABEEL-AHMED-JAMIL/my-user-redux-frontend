@@ -38,8 +38,10 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
-// npm install @kolkov/angular-editor --save
 
+/**
+ * @author Nabeel Ahmed
+ */
 @NgModule({
   exports: [
     NzMenuModule,
@@ -78,10 +80,10 @@ import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
     NzCollapseModule,
     NzPaginationModule,
     NzSkeletonModule,
-    NzCarouselModule 
+    NzCarouselModule
   ],
-  providers:[
-    { 
+  providers: [
+    {
       provide: NZ_I18N,
       useValue: en_US
     }

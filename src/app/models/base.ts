@@ -66,10 +66,10 @@ export interface IEnum {
 };
 
 export interface IBaseEntityRequest {
-    id: string;
-    createdAt: any;
-    updatedAt: any;
-    status: Status;
+    id?: string;
+    createdAt?: any;
+    updatedAt?: any;
+    status?: Status;
 }
 
 export interface IBaseEntityResponse {

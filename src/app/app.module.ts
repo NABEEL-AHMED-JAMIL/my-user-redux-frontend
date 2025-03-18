@@ -8,8 +8,13 @@ import { SpinnerComponent } from './spinner.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BidiModule } from '@angular/cdk/bidi';
-import { GraphQLModule } from './graphql.module';
-// module
+// applo
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';  
+import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
+import { HttpLink } from 'apollo-angular/http';
+import { HttpHeaders } from '@angular/common/http';
+import { setContext } from '@apollo/client/link/context';
+// ng and other import module
 import { IconsProviderModule } from './icons-provider.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule } from './helpers';
@@ -17,6 +22,7 @@ import { NgZorroAntdModule } from './helpers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { config } from '../environments/environment';
 // compoenet
 import {
   ForgotComponent,
@@ -28,6 +34,24 @@ import {
   ListBookComponent
 } from './components/index';
 
+// appllo config
+export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
+  let currentUser: any = sessionStorage.getItem('current-user');
+  const authLink = setContext(() => {
+    return {
+      headers: new HttpHeaders({
+        Authorization: currentUser ? `Bearer ${currentUser.token}` : '',
+      }),
+    };
+  });
+  return {
+    link: authLink.concat(
+      httpLink.create({
+        uri: config.graphQLUrl
+    })),
+    cache: new InMemoryCache(),
+  };
+};
 
 export const APP_COMPONENT = [
   SpinnerComponent,
@@ -40,6 +64,9 @@ export const APP_COMPONENT = [
   ListBookComponent
 ];
 
+/**
+ * @author Nabeel Ahmed
+ */
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +79,7 @@ export const APP_COMPONENT = [
     AppRoutingModule,
     FormsModule,
     BidiModule,
-    GraphQLModule,
+    ApolloModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -68,7 +95,13 @@ export const APP_COMPONENT = [
       connectInZone: true // If set to true, the connection is established within the Angular zone
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: createApollo,
+      deps: [HttpLink]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

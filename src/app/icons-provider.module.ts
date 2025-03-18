@@ -18,6 +18,9 @@ const icons = [
   FormOutline
 ];
 
+/**
+ * @author Nabeel Ahmed
+ */
 @NgModule({
   imports: [NzIconModule],
   exports: [NzIconModule],

@@ -5,8 +5,7 @@ import {
     HttpParams
 } from '@angular/common/http';
 import {
-    Observable,
-    throwError
+    Observable
 } from 'rxjs';
 import {
     map,
@@ -19,7 +18,9 @@ import {
 } from '../helpers';
 import { ERROR, IGQLResponse } from '../models';
 
-
+/**
+ * @author Nabeel Ahmed
+ */
 @Injectable({
     providedIn: 'root'
 })

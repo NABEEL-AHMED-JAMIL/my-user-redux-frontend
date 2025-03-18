@@ -6,7 +6,9 @@ import {
     HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../services/authentication.service';
+import {
+    AuthenticationService
+} from '../services/authentication.service';
 
 /**
  * @author Nabeel Ahmed

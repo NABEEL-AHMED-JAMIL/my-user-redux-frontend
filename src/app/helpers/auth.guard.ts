@@ -18,11 +18,11 @@ export class AuthGuard implements CanActivate {
         private authenticationService: AuthenticationService) {}
 
     public canActivate(route: ActivatedRouteSnapshot): boolean {
-        if (this.hasRoleAccess(route.data['role'])) {
+        if (this.hasRoleAccess(route.data['roles'])) {
             return true;
         }
         // authorised so return true
-        this.router.navigate(['/404']);
+        this.router.navigate(['/auth/login']);
         return false;
     }
 

@@ -1,0 +1,28 @@
+<div nz-row nzJustify="center" nzAlign="middle">
+    <div nz-col [nzSpan]="8" class="forgot-container">
+        <form nz-form [formGroup]="forgotForm" (ngSubmit)="onSubmit()">
+            <h3 class="forgot-tite">
+                Forgot Password
+            </h3>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your Email!">
+                    <nz-input-group nzPrefixIcon="mail">
+                        <input nz-input type="email" formControlName="email" placeholder="Enter Email" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <div nz-row style="margin-top: 16px;">
+                <div nz-col [nzSpan]="12">
+                    <button nz-button nzType="default" style="width: fit-content;" routerLink="/auth/login">
+                        Go back
+                    </button>
+                </div>
+                <div nz-col [nzSpan]="12" style="text-align: end;">
+                    <button nz-button [nzType]="'primary'" style="width: fit-content;">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

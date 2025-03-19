@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from './services/authentication.service';
+import { ITokenResponse } from './models';
 
 
 /**
@@ -11,7 +13,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  constructor() {
+  public currentUser: ITokenResponse;
+
+  constructor(
+    private authenticationService: AuthenticationService) {
+    this.currentUser = this.authenticationService.currentUserValue;
   }
 
   ngOnInit(): void {

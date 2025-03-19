@@ -1,6 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import {
+    UntypedFormBuilder,
+    UntypedFormGroup,
+    Validators
+} from '@angular/forms';
+import {
+    Router,
+    ActivatedRoute
+} from '@angular/router';
+import { AlertService } from '../../../helpers';
+import { AuthenticationService } from '../../../services/authentication.service';
 
-
+/**
+ * @author Nabeel Ahmed
+ */
 @Component({
     selector: 'login',
     templateUrl: './login.component.html',
@@ -8,10 +21,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-    constructor() {
+    public passwordVisible: boolean = false;
+    public loginForm!: UntypedFormGroup;
+    public returnUrl: string;
+
+    constructor(
+        private router: Router,
+        private fb: UntypedFormBuilder,
+        private route: ActivatedRoute,
+        private alertService: AlertService,
+        private authenticationService: AuthenticationService) {
+        // redirect to home if already logged in
+        if (this.authenticationService.currentUserValue) {
+            this.router.navigate(['/ql/mybook']);
+        }
     }
 
     ngOnInit() {
+        this.loginForm = this.fb.group({
+            username: ['nabeel.amd93', [Validators.required]],
+            password: ['B@llistic1', [Validators.required]]
+        });
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/ql/mybook';
+    }
+
+    public onSubmit(): any {
+
     }
 
 }

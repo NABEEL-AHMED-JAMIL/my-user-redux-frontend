@@ -2,21 +2,45 @@
 <nz-layout class="layout">
     <nz-header>
         <div class="logo">
-            <img src="../assets/img/loading.gif"
-                id="logo-img"
-                class="logo-img">
-            <h3 style="color: white;margin-top: -78px;margin-left: 47px;">
-                Redux X
+            <img src="../assets/img/loading.gif" id="logo-img" class="logo-img">
+            <h3 class="log-h3">
+                Graphql & Redux
             </h3>
         </div>
+        <!-- menu -->
+        <ul nz-menu nzTheme="dark" nzMode="horizontal">
+            <li nz-menu-item [routerLink]="currentUser ? '/ql/mybook' : null"
+                routerLinkActive="ant-menu-item-selected"
+                [nzDisabled]="!currentUser"
+                (click)="!currentUser ? $event.preventDefault() : null">
+                <span nz-icon nzType="book" nzTheme="outline"></span>
+                My Book
+            </li>
+            <li nz-menu-item [routerLink]="currentUser ? '/ql/authors' : null"
+                routerLinkActive="ant-menu-item-selected"
+                [nzDisabled]="!currentUser"
+                (click)="!currentUser ? $event.preventDefault() : null">
+                <span nz-icon nzType="usergroup-add" nzTheme="outline"></span>
+                Authors
+            </li>
+            <li nz-menu-item [routerLink]="currentUser ? '/ql/publicbook' : null"
+                routerLinkActive="ant-menu-item-selected"
+                [nzDisabled]="!currentUser"
+                (click)="!currentUser ? $event.preventDefault() : null">
+                <span nz-icon nzType="folder-open" nzTheme="outline"></span>
+                Public Book
+            </li>
+            <!-- Logout button -->
+            <button nz-button nzType="default" class="logout">
+                <span nz-icon nzType="logout" nzTheme="outline"></span>
+                Logout
+            </button>
+        </ul>
     </nz-header>
     <nz-content>
-        <br>
         <div class="inner-content">
-            <div nz-row>
-                <div nz-col nzSpan="20">
-                </div>
-            </div>
+            <spinner></spinner>
+            <router-outlet></router-outlet>
         </div>
     </nz-content>
 </nz-layout>

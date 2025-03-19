@@ -27,8 +27,4 @@ export class StorageService {
         sessionStorage.clear();
     }
 
-    public findLookupByParent(parentId: any) {
-        return JSON.parse(sessionStorage.getItem('lookup-cache'))[parentId];
-    }
-
 }

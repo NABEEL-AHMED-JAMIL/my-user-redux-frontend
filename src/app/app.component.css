@@ -3,7 +3,7 @@
 }
 
 .logo {
-    width: 120px;
+    width: 180px;
     height: 31px;
     background: rgba(255, 255, 255, 0.2);
     margin: 16px 24px 16px 0;
@@ -46,4 +46,19 @@ nz-footer {
 .inner-content {
     height: auto;
     margin-bottom: 10px;
+}
+
+.log-h3 {
+    color: white;
+    margin-top: -78px;
+    margin-left: 40px;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item, .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
+    padding: 0 10px !important;
+}
+
+.logout {
+    float: right;
+    margin-top: 16px;
 }

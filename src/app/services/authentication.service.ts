@@ -31,7 +31,7 @@ export class AuthenticationService {
         return this.apiService.postData(`${config.apiBaseUrl}/auth.json/getToken`, payload)
             .pipe(map(response => {
                 if (response.data) {
-                    this.storageService.set('currentUser', response.data);
+                    this.storageService.set('current-user', response.data);
                     this.currentUserSubject.next(response.data);
                 }
                 return response;

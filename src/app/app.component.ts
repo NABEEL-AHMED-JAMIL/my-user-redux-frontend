@@ -4,7 +4,6 @@ import { ITokenResponse } from './models';
 import { Store } from '@ngrx/store';
 import { LogoutAction } from './store/actions/auth.action';
 
-
 /**
  * @author Nabeel Ahmed
  */
@@ -23,8 +22,7 @@ export class AppComponent implements OnInit {
     this.authenticationService.currentUser
       .subscribe((user: ITokenResponse) => {
         this.currentUser = user;
-      }
-      );
+      });
   }
 
   ngOnInit(): void {

@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { GraphqlService } from './graphql.service';
 import {
   IBookRequest,
-  IBookResponse,
-  IBookListResponse
+  IGQLResponse
 } from '../models';
 import { Observable } from 'rxjs';
 
@@ -357,7 +356,7 @@ export class BookService {
    * "67d411a4a7d71343e38177d8" test id 
    * Test case status = pass
    */
-  public getBook(id: String): Observable<IBookResponse> {
+  public getBook(id: String): Observable<IGQLResponse> {
     return this.graphqlService.query(this.GET_BOOK, { id });
   }
 
@@ -365,7 +364,7 @@ export class BookService {
    * Method use to fetch the books
    * Test case status = pass
    */
-  public getAllBooks(): Observable<IBookListResponse> {
+  public getAllBooks(): Observable<IGQLResponse> {
     return this.graphqlService.query(this.GET_ALL_BOOKS);
   }
 
@@ -373,7 +372,7 @@ export class BookService {
    * Method use to fetch the public authors
    * Test case status = pass
    */
-  public fetchPublicBooks(): Observable<IBookListResponse> {
+  public fetchPublicBooks(): Observable<IGQLResponse> {
     return this.graphqlService.query(this.FETCH_PUBLIC_BOOKS);
   }
 
@@ -381,7 +380,7 @@ export class BookService {
    * Method use to create a book
    * Test case status = pending
    */
-  public createBook(payload: IBookRequest): Observable<IBookResponse> {
+  public createBook(payload: IBookRequest): Observable<IGQLResponse> {
     return this.graphqlService.mutate(this.CREATE_BOOK, payload);
   }
 
@@ -389,7 +388,7 @@ export class BookService {
    * Method use to update a book
    * Test case satus = pending
   */
-  public updateBook(payload: IBookRequest): Observable<IBookResponse> {
+  public updateBook(payload: IBookRequest): Observable<IGQLResponse> {
     return this.graphqlService.mutate(this.UPDATE_BOOK, payload);
   }
 
@@ -397,7 +396,7 @@ export class BookService {
  * Method use to delete book
  * Test case status = pass
  */
-  public deleteBook(id: String): Observable<IBookResponse> {
+  public deleteBook(id: String): Observable<IGQLResponse> {
     return this.graphqlService.mutate(this.DELETE_BOOK, { id });
   }
 

@@ -8,8 +8,13 @@ import {
     Router,
     ActivatedRoute
 } from '@angular/router';
-import { AlertService } from '../../../helpers';
-import { AuthenticationService } from '../../../services/authentication.service';
+import {
+    AuthenticationService
+} from '../../../services/authentication.service';
+import {
+    GetTokenAction
+} from '../../../store/actions/auth.action';
+import { Store } from '@ngrx/store';
 
 /**
  * @author Nabeel Ahmed
@@ -26,10 +31,10 @@ export class LoginComponent implements OnInit {
     public returnUrl: string;
 
     constructor(
+        private store: Store<any>,
         private router: Router,
         private fb: UntypedFormBuilder,
         private route: ActivatedRoute,
-        private alertService: AlertService,
         private authenticationService: AuthenticationService) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) {
@@ -47,7 +52,10 @@ export class LoginComponent implements OnInit {
     }
 
     public onSubmit(): any {
-
+        if (this.loginForm.invalid) {
+            return;
+        }
+        this.store.dispatch(new GetTokenAction(this.loginForm.getRawValue()));
     }
 
 }

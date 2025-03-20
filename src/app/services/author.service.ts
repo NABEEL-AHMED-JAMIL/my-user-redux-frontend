@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 import { GraphqlService } from './graphql.service';
 import {
   IAuthorRequest,
-  IAuthorResponse,
-  IAuthorListResponse
+  IGQLResponse
 } from '../models';
 
 /**
@@ -198,7 +197,7 @@ export class AuthorService {
    * "67d1f12f3bc5ed1178c3ce1c" test id 
    * Test case status = pass
    */
-  public getAuthor(id: String): Observable<IAuthorResponse> {
+  public getAuthor(id: String): Observable<IGQLResponse> {
     return this.graphqlService.query(this.GET_AUTHOR, { id });
   }
 
@@ -206,7 +205,7 @@ export class AuthorService {
    * Method use to fetch the authors
    * Test case status = pass
    */
-  public getAllAuthors(): Observable<IAuthorListResponse> {
+  public getAllAuthors(): Observable<IGQLResponse> {
     return this.graphqlService.query(this.GET_ALL_AUTHORS);
   }
 
@@ -214,7 +213,7 @@ export class AuthorService {
    * Method use to fetch the public authors
    * Test case status = pass
    */
-  public fetchPublicAuthors(): Observable<IAuthorListResponse> {
+  public fetchPublicAuthors(): Observable<IGQLResponse> {
     return this.graphqlService.query(this.FETCH_PUBLIC_AUTHORS);
   }
 
@@ -222,7 +221,7 @@ export class AuthorService {
    * Method use to create a author
    * Test case status = pending
    */
-  public createAuthor(payload: IAuthorRequest): Observable<IAuthorResponse> {
+  public createAuthor(payload: IAuthorRequest): Observable<IGQLResponse> {
     return this.graphqlService.mutate(this.CREATE_AUTHOR, { payload });
   }
 
@@ -230,7 +229,7 @@ export class AuthorService {
    * Method use to update a author
    * Test case satus = pending
    */
-  public bookAuthor(payload: IAuthorRequest): Observable<IAuthorResponse> {
+  public updateAuthor(payload: IAuthorRequest): Observable<IGQLResponse> {
     return this.graphqlService.mutate(this.UPDATE_AUTHOR, { payload });
   }
 
@@ -238,7 +237,7 @@ export class AuthorService {
   * Method use to delete the author by id
   * Test case status = pass
   */
-  public deleteAuthor(id: String): Observable<IAuthorListResponse> {
+  public deleteAuthor(id: String): Observable<IGQLResponse> {
     return this.graphqlService.mutate(this.DELETE_AUTHOR, { id });
   }
 

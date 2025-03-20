@@ -32,6 +32,10 @@ const routes: Routes = [
   {
     path: 'ql',
     canActivate: [AuthGuard],
+    data: {
+      breadcrumb: 'QL',
+      roles: [Role.ADMIN, Role.USER]
+    },
     children: [
       {
         path: 'mybook',

@@ -33,6 +33,7 @@ import {
   CuBookComponent,
   ListBookComponent
 } from './components/index';
+import { AuthEffects } from './store/effects/auth.effect';
 
 // appllo config
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
@@ -85,6 +86,8 @@ export const APP_COMPONENT = [
     BrowserAnimationsModule,
     IconsProviderModule,
     NgZorroAntdModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([AuthEffects]),
     // devtools
     StoreDevtoolsModule.instrument({
       maxAge: 25,

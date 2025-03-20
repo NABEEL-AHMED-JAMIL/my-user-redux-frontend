@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListBookComponent implements OnInit {
 
     constructor() {
+        
     }
 
     ngOnInit(): void {

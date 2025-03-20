@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { IGQLResponse, ITokenResponse } from '../models';
 import { config } from '../../environments/environment';
 import { ApiService } from './api.service';
@@ -14,7 +13,7 @@ import { StorageService } from '../helpers';
 })
 export class AuthenticationService {
 
-    private currentUserSubject: BehaviorSubject<ITokenResponse>;
+    public currentUserSubject: BehaviorSubject<ITokenResponse>;
     public currentUser: Observable<ITokenResponse>;
 
     constructor(private apiService: ApiService,
@@ -28,25 +27,18 @@ export class AuthenticationService {
     }
 
     public getToken(payload: any): Observable<IGQLResponse> {
-        return this.apiService.postData(`${config.apiBaseUrl}/auth.json/getToken`, payload)
-            .pipe(map(response => {
-                if (response.data) {
-                    this.storageService.set('current-user', response.data);
-                    this.currentUserSubject.next(response.data);
-                }
-                return response;
-            }));
+        return this.apiService.postData(`${config.apiBaseUrl}/auth/getToken`, payload);
     }
 
     public forgotPassword(payload: any): Observable<IGQLResponse> {
-        return this.apiService.postData(`${config.apiBaseUrl}/auth.json/forgotPassword`, payload);
+        return this.apiService.postData(`${config.apiBaseUrl}/auth/forgotPassword?username=${payload['username']}`);
     }
 
     public resetPassword(payload: any): Observable<IGQLResponse> {
-        return this.apiService.postData(`${config.apiBaseUrl}/auth.json/resetPassword`, payload);
+        return this.apiService.postData(`${config.apiBaseUrl}/auth/resetPassword`, payload);
     }
 
-    public logout(): void {
+    public logout(): any {
         this.storageService.clear();
         this.currentUserSubject.next(null);
     }

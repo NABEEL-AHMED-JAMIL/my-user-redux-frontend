@@ -47,7 +47,7 @@ export class ApiService {
     }
 
     // POST request with error handling and tap
-    public postData(apiUrl: any, payload: any, params?: HttpParams): Observable<IGQLResponse> {
+    public postData(apiUrl: any, payload?: any, params?: HttpParams): Observable<IGQLResponse> {
         this.spinnerService.show();
         const options = {
             params: params || new HttpParams()

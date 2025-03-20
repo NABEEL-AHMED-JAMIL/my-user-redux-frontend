@@ -1,6 +1,5 @@
-<spinner dir="ltr"></spinner>
 <nz-layout class="layout">
-    <nz-header>
+    <nz-header *ngIf="currentUser">
         <div class="logo">
             <img src="../assets/img/loading.gif" id="logo-img" class="logo-img">
             <h3 class="log-h3">
@@ -9,29 +8,23 @@
         </div>
         <!-- menu -->
         <ul nz-menu nzTheme="dark" nzMode="horizontal">
-            <li nz-menu-item [routerLink]="currentUser ? '/ql/mybook' : null"
-                routerLinkActive="ant-menu-item-selected"
-                [nzDisabled]="!currentUser"
-                (click)="!currentUser ? $event.preventDefault() : null">
+            <li nz-menu-item [routerLink]="'/ql/mybook'"
+                routerLinkActive="ant-menu-item-selected">
                 <span nz-icon nzType="book" nzTheme="outline"></span>
                 My Book
             </li>
-            <li nz-menu-item [routerLink]="currentUser ? '/ql/authors' : null"
-                routerLinkActive="ant-menu-item-selected"
-                [nzDisabled]="!currentUser"
-                (click)="!currentUser ? $event.preventDefault() : null">
+            <li nz-menu-item [routerLink]="'/ql/authors'"
+                routerLinkActive="ant-menu-item-selected">
                 <span nz-icon nzType="usergroup-add" nzTheme="outline"></span>
                 Authors
             </li>
-            <li nz-menu-item [routerLink]="currentUser ? '/ql/publicbook' : null"
-                routerLinkActive="ant-menu-item-selected"
-                [nzDisabled]="!currentUser"
-                (click)="!currentUser ? $event.preventDefault() : null">
+            <li nz-menu-item [routerLink]="'/ql/publicbook'"
+                routerLinkActive="ant-menu-item-selected">
                 <span nz-icon nzType="folder-open" nzTheme="outline"></span>
                 Public Book
             </li>
             <!-- Logout button -->
-            <button nz-button nzType="default" class="logout">
+            <button nz-button nzType="default" class="logout" (click)="onLogout()">
                 <span nz-icon nzType="logout" nzTheme="outline"></span>
                 Logout
             </button>

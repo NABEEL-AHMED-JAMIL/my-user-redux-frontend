@@ -1,6 +1,9 @@
 import { Action } from '@ngrx/store';
 import { type } from '../../utils';
 
+/**
+ * @author Nabeel Ahmed
+ */
 export const ActionTypes = {
     // GET BOOK
     GET_BOOK: type('GET_BOOK'),
@@ -28,109 +31,109 @@ export const ActionTypes = {
     DELETE_BOOK_FAILED: type('DELETE_BOOK_FAILED')
 }
 
-// ##### GET_BOOK
+// ##### GET_BOOK #####
 export class GetBookAction implements Action {
     public readonly type = ActionTypes.GET_BOOK;
     constructor(public payload: any) {}
 }
 
-// ##### GET_BOOK_SUCCESS
+// ##### GET_BOOK_SUCCESS #####
 export class GetBookSuccesAction implements Action {
     public readonly type = ActionTypes.GET_BOOK_SUCCESS;
     constructor(public payload: any) {}
 }
 
-// ##### GET_BOOK_FAILED
+// ##### GET_BOOK_FAILED #####
 export class GetBookFailedAction implements Action {
     public readonly type = ActionTypes.GET_BOOK_FAILED;
     constructor(public payload: any) {}
 }
 
-// ##### GET_ALL_BOOKS
+// ##### GET_ALL_BOOKS #####
 export class GetAllBooksAction implements Action {
     public readonly type = ActionTypes.GET_ALL_BOOKS;
     constructor(public payload: any) {}
 }
 
-// ##### GET_ALL_BOOKS_SUCCESS
+// ##### GET_ALL_BOOKS_SUCCESS #####
 export class GetAllBooksSuccesAction implements Action {
     public readonly type = ActionTypes.GET_ALL_BOOKS_SUCCESS;
     constructor(public payload: any) {}
 }
 
-// ##### GET_ALL_BOOKS_FAILED
+// ##### GET_ALL_BOOKS_FAILED #####
 export class GGetAllBooksFailedAction implements Action {
     public readonly type = ActionTypes.GET_ALL_BOOKS_FAILED;
     constructor(public payload: any) {}
 }
 
-// ##### FETCH_PUBLIC_BOOKS
+// ##### FETCH_PUBLIC_BOOKS #####
 export class FetchPublicBooksAction implements Action {
     public readonly type = ActionTypes.FETCH_PUBLIC_BOOKS;
     constructor(public payload: any) {}
 }
 
-// ##### FETCH_PUBLIC_BOOKS_SUCCESS
+// ##### FETCH_PUBLIC_BOOKS_SUCCESS #####
 export class FetchPublicSuccesAction implements Action {
     public readonly type = ActionTypes.FETCH_PUBLIC_BOOKS_SUCCESS;
     constructor(public payload: any) {}
 }
 
-// ##### FETCH_PUBLIC_BOOKS_FAILED
+// ##### FETCH_PUBLIC_BOOKS_FAILED #####
 export class FetchPublicFailedAction implements Action {
     public readonly type = ActionTypes.FETCH_PUBLIC_BOOKS_FAILED;
     constructor(public payload: any) {}
 }
 
-// ##### CREATE_BOOK
+// ##### CREATE_BOOK #####
 export class CreateBookAction implements Action {
     public readonly type = ActionTypes.CREATE_BOOK;
     constructor(public payload: any) {}
 }
 
-// ##### CREATE_BOOK_SUCCESS
+// ##### CREATE_BOOK_SUCCESS #####
 export class CreateBookSuccesAction implements Action {
     public readonly type = ActionTypes.CREATE_BOOK_SUCCESS;
     constructor(public payload: any) {}
 }
 
-// ##### CREATE_BOOK_FAILED
+// ##### CREATE_BOOK_FAILED #####
 export class CreateBookFailedAction implements Action {
     public readonly type = ActionTypes.CREATE_BOOK_FAILED;
     constructor(public payload: any) {}
 }
 
-// ##### UPDATE_BOOK
+// ##### UPDATE_BOOK #####
 export class UpdateBookAction implements Action {
     public readonly type = ActionTypes.UPDATE_BOOK;
     constructor(public payload: any) {}
 }
 
-// ##### UPDATE_BOOK_SUCCESS
+// ##### UPDATE_BOOK_SUCCESS #####
 export class UpdateBookSuccesAction implements Action {
     public readonly type = ActionTypes.UPDATE_BOOK_SUCCESS;
     constructor(public payload: any) {}
 }
 
-// ##### UPDATE_BOOK_FAILED
+// ##### UPDATE_BOOK_FAILED #####
 export class UpdateBookFailedAction implements Action {
     public readonly type = ActionTypes.UPDATE_BOOK_FAILED;
     constructor(public payload: any) {}
 }
 
- // ##### DELETE_BOOK
+ // ##### DELETE_BOOK #####
 export class DeleteBookAction implements Action {
     public readonly type = ActionTypes.DELETE_BOOK;
     constructor(public payload: any) {}
 }
 
-// ##### DELETE_BOOK_SUCCESS
+// ##### DELETE_BOOK_SUCCESS #####
 export class DeleteBookSuccesAction implements Action {
     public readonly type = ActionTypes.DELETE_BOOK_SUCCESS;
     constructor(public payload: any) {}
 }
 
-// ##### DELETE_BOOK_FAILED
+// ##### DELETE_BOOK_FAILED #####
 export class DeleteBookFailedAction implements Action {
     public readonly type = ActionTypes.DELETE_BOOK_FAILED;
     constructor(public payload: any) {}

@@ -5,8 +5,8 @@ export const ERROR:string = "ERROR";
 export const SUCCESS:string = "SUCCESS";
 
 export enum Role {
-    USER,
-    ADMIN
+    USER = "USER",
+    ADMIN = "ADMIN"
 };
 
 export enum Status {
@@ -80,7 +80,7 @@ export interface IBaseEntityResponse {
 }
 
 export interface IGQLResponse {
-    status: IEnum;	    
+    status: any;	    
     message: any;	    
     data: any;
 }

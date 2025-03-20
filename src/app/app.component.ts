@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './services/authentication.service';
 import { ITokenResponse } from './models';
+import { Store } from '@ngrx/store';
+import { LogoutAction } from './store/actions/auth.action';
 
 
 /**
@@ -13,14 +15,23 @@ import { ITokenResponse } from './models';
 })
 export class AppComponent implements OnInit {
 
-  public currentUser: ITokenResponse;
+  public currentUser: ITokenResponse | null = null;
 
   constructor(
+    private store: Store<any>,
     private authenticationService: AuthenticationService) {
-    this.currentUser = this.authenticationService.currentUserValue;
+    this.authenticationService.currentUser
+      .subscribe((user: ITokenResponse) => {
+        this.currentUser = user;
+      }
+      );
   }
 
   ngOnInit(): void {
+  }
+
+  public onLogout() {
+    this.store.dispatch(new LogoutAction());
   }
 
 }

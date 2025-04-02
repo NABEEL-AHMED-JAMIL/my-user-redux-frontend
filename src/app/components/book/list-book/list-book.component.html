@@ -23,7 +23,18 @@
             <nz-tag [nzColor]="'blue'">
                 Update: {{author.updatedAt | date}}
             </nz-tag>
-            <button nz-button (click)="refresh()">Refresh</button>
+            <nz-button-group>
+                <button nz-button (click)="refresh()">
+                    <span nz-icon nzTheme="outline"
+                        nzType="plus-circle">
+                    </span>
+                </button>
+                <button nz-button (click)="refresh()">
+                    <span nz-icon nzTheme="outline"
+                        nzType="reload">
+                    </span>
+                </button>
+            </nz-button-group>
         </nz-page-header-extra>
         <!--content-->
         <nz-page-header-content>

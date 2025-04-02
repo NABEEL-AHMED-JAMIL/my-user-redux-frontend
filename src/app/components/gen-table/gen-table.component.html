@@ -66,13 +66,13 @@
         <tr *ngFor='let row of dynamicTable.data | searchdata: searchDetails;let i = index;'>
             <td style="text-align: center;width: 1px;">{{i+1}}</td>
             <ng-container *ngFor='let col of staticTable.dataColumn'>
-                <td *ngIf="col.type === 'date'" style="text-align: center;width: 1px;">
+                <td *ngIf="col.type === 'date'" style="text-align: center;">
                     {{row[col.field] | date:'yyyy-MM-dd'}}
                 </td>
-                <td *ngIf="col.type === 'data'">
+                <td *ngIf="col.type === 'data'" style="text-align: center;">
                     {{row[col.field]}}
                 </td>
-                <td *ngIf="col.type === 'tag'">
+                <td *ngIf="col.type === 'tag'" style="text-align: center;">
                     {{row[col.field].name}}
                 </td>
             </ng-container>

@@ -28,7 +28,7 @@ export class ListBookComponent implements OnInit {
             {
                 type: 'plus-circle',
                 color: 'red',
-                tooltipTitle: 'Add',
+                tooltipTitle: 'Add Book',
                 action: ActionType.ADD
             },
             {
@@ -84,13 +84,13 @@ export class ListBookComponent implements OnInit {
             {
                 type: 'form',
                 color: 'green',
-                tooltipTitle: 'Edit',
+                tooltipTitle: 'Edit Book',
                 action: ActionType.EDIT
             },
             {
                 type: 'delete',
                 color: 'red',
-                tooltipTitle: 'Delete',
+                tooltipTitle: 'Delete Book',
                 action: ActionType.DELETE
             }
         ]

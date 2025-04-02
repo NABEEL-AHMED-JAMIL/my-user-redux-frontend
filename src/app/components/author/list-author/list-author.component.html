@@ -1,1 +1,55 @@
-sasdasdas
+<div class="content" *ngFor="let author of authors$ | async"
+    style="margin-top: 10px;">
+    <nz-page-header>
+        <!--title-->
+        <nz-page-header-title>
+            <span nz-icon nzTheme="outline" nzType="link"></span>
+            {{author.firstName}} {{author.lastName}}
+        </nz-page-header-title>
+        <!--subtitle-->
+        <nz-page-header-subtitle>
+            {{author.expertise}}
+        </nz-page-header-subtitle>
+        <nz-page-header-tags>
+            <nz-tag [nzColor]="'#4d6f3d'">
+                Status: {{author.status?.value}}
+            </nz-tag>
+        </nz-page-header-tags>
+        <!--tags-->
+        <nz-page-header-extra>
+            <nz-tag [nzColor]="'blue'">
+                Create: {{author.createdAt | date}}
+            </nz-tag>
+            <nz-tag [nzColor]="'blue'">
+                Update: {{author.updatedAt | date}}
+            </nz-tag>
+        </nz-page-header-extra>
+        <!--content-->
+        <nz-page-header-content>
+            <nz-page-header-tags>
+                <nz-tag [nzColor]="'red'">
+                    Email: {{author.email}}
+                </nz-tag>
+                <nz-tag [nzColor]="'red'">
+                    Username: {{author.username}}
+                </nz-tag>
+                <nz-tag [nzColor]="'blue'">
+                    Role: {{author.role}}
+                </nz-tag>
+                <nz-tag [nzColor]="'blue'">
+                    Nationality: {{author.nationality}}
+                </nz-tag>
+            </nz-page-header-tags>
+            <div nz-row>
+                <div class="content">
+                    <p nz-paragraph>
+                        {{author.biography}}
+                    </p>
+                </div>
+                <div class="content-image">
+                    <img [src]="author.image" alt="content" />
+                </div>
+            </div>
+        </nz-page-header-content>
+    </nz-page-header>
+</div>

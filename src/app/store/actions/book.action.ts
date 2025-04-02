@@ -13,10 +13,6 @@ export const ActionTypes = {
     GET_ALL_BOOKS: type('GET_ALL_BOOKS'),
     GET_ALL_BOOKS_SUCCESS: type('GET_ALL_BOOKS_SUCCESS'),
     GET_ALL_BOOKS_FAILED: type('GET_ALL_BOOKS_FAILED'),
-    // FETCH PUBLIC BOOKS
-    FETCH_PUBLIC_BOOKS: type('FETCH_PUBLIC_BOOKS'),
-    FETCH_PUBLIC_BOOKS_SUCCESS: type('FETCH_PUBLIC_BOOKS_SUCCESS'),
-    FETCH_PUBLIC_BOOKS_FAILED: type('FETCH_PUBLIC_BOOKS_FAILED'),
     // CREATE BOOK
     CREATE_BOOK: type('CREATE_BOOK'),
     CREATE_BOOK_SUCCESS: type('CREATE_BOOK_SUCCESS'),
@@ -52,7 +48,7 @@ export class GetBookFailedAction implements Action {
 // ##### GET_ALL_BOOKS #####
 export class GetAllBooksAction implements Action {
     public readonly type = ActionTypes.GET_ALL_BOOKS;
-    constructor(public payload: any) {}
+    constructor() {}
 }
 
 // ##### GET_ALL_BOOKS_SUCCESS #####
@@ -64,24 +60,6 @@ export class GetAllBooksSuccesAction implements Action {
 // ##### GET_ALL_BOOKS_FAILED #####
 export class GGetAllBooksFailedAction implements Action {
     public readonly type = ActionTypes.GET_ALL_BOOKS_FAILED;
-    constructor(public payload: any) {}
-}
-
-// ##### FETCH_PUBLIC_BOOKS #####
-export class FetchPublicBooksAction implements Action {
-    public readonly type = ActionTypes.FETCH_PUBLIC_BOOKS;
-    constructor(public payload: any) {}
-}
-
-// ##### FETCH_PUBLIC_BOOKS_SUCCESS #####
-export class FetchPublicSuccesAction implements Action {
-    public readonly type = ActionTypes.FETCH_PUBLIC_BOOKS_SUCCESS;
-    constructor(public payload: any) {}
-}
-
-// ##### FETCH_PUBLIC_BOOKS_FAILED #####
-export class FetchPublicFailedAction implements Action {
-    public readonly type = ActionTypes.FETCH_PUBLIC_BOOKS_FAILED;
     constructor(public payload: any) {}
 }
 
@@ -145,9 +123,6 @@ export type Actions = GetBookAction
     | GetAllBooksAction
     | GetAllBooksSuccesAction
     | GGetAllBooksFailedAction
-    | FetchPublicBooksAction
-    | FetchPublicSuccesAction
-    | FetchPublicFailedAction
     | CreateBookAction
     | CreateBookSuccesAction
     | CreateBookFailedAction

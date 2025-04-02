@@ -51,8 +51,8 @@ export class AuthEffects {
             ofType(ActionTypes.GET_TOKEN),
             tap(() => this.spinnerService.show()),
             switchMap(({ payload }) =>
-                from(this.authenticationService.getToken(payload)).pipe(
-                    map((res: IGQLResponse) => {
+                from(this.authenticationService.getToken(payload))
+                    .pipe(map((res: IGQLResponse) => {
                         if (res.status === SUCCESS) {
                             this.storageService.set('current-user', res.data);
                             this.authenticationService.currentUserSubject.next(res.data);
@@ -81,8 +81,8 @@ export class AuthEffects {
             ofType(ActionTypes.FORGOT_PASSWORD),
             tap(() => this.spinnerService.show()),
             switchMap(({ payload }) =>
-                from(this.authenticationService.forgotPassword(payload)).pipe(
-                    map((res: IGQLResponse) => {
+                from(this.authenticationService.forgotPassword(payload))
+                    .pipe(map((res: IGQLResponse) => {
                         if (res.status === SUCCESS) {
                             this.alertService.showSuccess(res.message, ActionTypes.FORGOT_PASSWORD);
                             this.router.navigate(['/auth/login']);
@@ -109,8 +109,8 @@ export class AuthEffects {
             ofType(ActionTypes.RESET_PASSWORD),
             tap(() => this.spinnerService.show()),
             switchMap(({ payload }) =>
-                from(this.authenticationService.resetPassword(payload)).pipe(
-                    map((res: IGQLResponse) => {
+                from(this.authenticationService.resetPassword(payload))
+                    .pipe(map((res: IGQLResponse) => {
                         if (res.status === SUCCESS) {
                             this.alertService.showSuccess(res.message, ActionTypes.RESET_PASSWORD);
                             this.router.navigate(['/auth/login']);

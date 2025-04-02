@@ -4,7 +4,7 @@ import {
   IBookRequest,
   IGQLResponse
 } from '../models';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 /**
  * @author Nabeel Ahmed
@@ -357,7 +357,12 @@ export class BookService {
    * Test case status = pass
    */
   public getBook(id: String): Observable<IGQLResponse> {
-    return this.graphqlService.query(this.GET_BOOK, { id });
+    return this.graphqlService.query(this.GET_BOOK, { id }).pipe(
+      map(response => response?.data?.getBook || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -365,7 +370,12 @@ export class BookService {
    * Test case status = pass
    */
   public getAllBooks(): Observable<IGQLResponse> {
-    return this.graphqlService.query(this.GET_ALL_BOOKS);
+    return this.graphqlService.query(this.GET_ALL_BOOKS).pipe(
+      map(response => response?.data?.getAllBooks || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -373,7 +383,12 @@ export class BookService {
    * Test case status = pass
    */
   public fetchPublicBooks(): Observable<IGQLResponse> {
-    return this.graphqlService.query(this.FETCH_PUBLIC_BOOKS);
+    return this.graphqlService.query(this.FETCH_PUBLIC_BOOKS).pipe(
+      map(response => response?.data?.fetchPublicBooks || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -381,7 +396,12 @@ export class BookService {
    * Test case status = pending
    */
   public createBook(payload: IBookRequest): Observable<IGQLResponse> {
-    return this.graphqlService.mutate(this.CREATE_BOOK, payload);
+    return this.graphqlService.mutate(this.CREATE_BOOK, payload).pipe(
+      map(response => response?.data?.createBook || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -389,7 +409,12 @@ export class BookService {
    * Test case satus = pending
   */
   public updateBook(payload: IBookRequest): Observable<IGQLResponse> {
-    return this.graphqlService.mutate(this.UPDATE_BOOK, payload);
+    return this.graphqlService.mutate(this.UPDATE_BOOK, payload).pipe(
+      map(response => response?.data?.updateBook || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -397,7 +422,12 @@ export class BookService {
  * Test case status = pass
  */
   public deleteBook(id: String): Observable<IGQLResponse> {
-    return this.graphqlService.mutate(this.DELETE_BOOK, { id });
+    return this.graphqlService.mutate(this.DELETE_BOOK, { id }).pipe(
+      map(response => response?.data?.deleteBook || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
 

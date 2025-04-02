@@ -21,8 +21,6 @@ import {
     GetBookFailedAction,
     GetAllBooksSuccesAction,
     GGetAllBooksFailedAction,
-    FetchPublicSuccesAction,
-    FetchPublicFailedAction,
     CreateBookSuccesAction,
     CreateBookFailedAction,
     UpdateBookSuccesAction,
@@ -59,8 +57,9 @@ export class BookEffects {
             ofType(ActionTypes.GET_BOOK),
             tap(() => this.spinnerService.show()),
             switchMap(({ payload }) =>
-                from(this.bookService.getBook(payload)).pipe(
-                    map((res: IGQLResponse) => {
+                from(this.bookService.getBook(payload))
+                    .pipe(map((res: IGQLResponse) => {
+                        this.spinnerService.hide();
                         if (res.status === SUCCESS) {
                             this.alertService.showSuccess(res.message, ActionTypes.GET_BOOK);
                             return new GetBookSuccesAction(res.data);
@@ -85,11 +84,11 @@ export class BookEffects {
             ofType(ActionTypes.GET_ALL_BOOKS),
             tap(() => this.spinnerService.show()),
             switchMap(() =>
-                from(this.bookService.getAllBooks()).pipe(
-                    map((res: IGQLResponse) => {
+                from(this.bookService.getAllBooks())
+                    .pipe(map((res: IGQLResponse) => {
+                        this.spinnerService.hide();
                         if (res.status === SUCCESS) {
-                            this.alertService.showSuccess(res.message, ActionTypes.GET_ALL_BOOKS);
-                            return new GetAllBooksSuccesAction(res.data);
+                            return new GetAllBooksSuccesAction(res.data.books);
                         } else if (res.status === ERROR) {
                             this.alertService.showError(res.message, ActionTypes.GET_ALL_BOOKS);
                             return new GGetAllBooksFailedAction(res.message);
@@ -105,40 +104,15 @@ export class BookEffects {
         )
     );
 
-    /** fetchPublicBooks */
-    private fetchPublicBooks: Observable<Action> = createEffect(() =>
-        this.actions.pipe(
-            ofType(ActionTypes.FETCH_PUBLIC_BOOKS),
-            tap(() => this.spinnerService.show()),
-            switchMap(() =>
-                from(this.bookService.fetchPublicBooks()).pipe(
-                    map((res: IGQLResponse) => {
-                        if (res.status === SUCCESS) {
-                            this.alertService.showSuccess(res.message, ActionTypes.FETCH_PUBLIC_BOOKS);
-                            return new FetchPublicSuccesAction(res.data);
-                        } else if (res.status === ERROR) {
-                            this.alertService.showError(res.message, ActionTypes.FETCH_PUBLIC_BOOKS);
-                            return new FetchPublicFailedAction(res.message);
-                        }
-                    }),
-                    catchError((err: any) => {
-                        this.alertService.showError(err?.error.message, ActionTypes.FETCH_PUBLIC_BOOKS);
-                        return of(new FetchPublicFailedAction(err?.error.message));
-                    }),
-                    finalize(() => this.spinnerService.hide())
-                )
-            )
-        )
-    );
-
     /** createBook */
     private createBook: Observable<Action> = createEffect(() =>
         this.actions.pipe(
             ofType(ActionTypes.UPDATE_BOOK),
             tap(() => this.spinnerService.show()),
             switchMap(({ payload }) =>
-                from(this.bookService.createBook(payload)).pipe(
-                    map((res: IGQLResponse) => {
+                from(this.bookService.createBook(payload))
+                    .pipe(map((res: IGQLResponse) => {
+                        this.spinnerService.hide();
                         if (res.status === SUCCESS) {
                             this.alertService.showSuccess(res.message, ActionTypes.CREATE_BOOK);
                             return new CreateBookSuccesAction(res.data);
@@ -163,8 +137,9 @@ export class BookEffects {
             ofType(ActionTypes.UPDATE_BOOK),
             tap(() => this.spinnerService.show()),
             switchMap(({ payload }) =>
-                from(this.bookService.updateBook(payload)).pipe(
-                    map((res: IGQLResponse) => {
+                from(this.bookService.updateBook(payload))
+                    .pipe(map((res: IGQLResponse) => {
+                        this.spinnerService.hide();
                         if (res.status === SUCCESS) {
                             this.alertService.showSuccess(res.message, ActionTypes.UPDATE_BOOK);
                             return new UpdateBookSuccesAction(res.data);
@@ -189,8 +164,9 @@ export class BookEffects {
             ofType(ActionTypes.DELETE_BOOK),
             tap(() => this.spinnerService.show()),
             switchMap(({ payload }) =>
-                from(this.bookService.deleteBook(payload)).pipe(
-                    map((res: IGQLResponse) => {
+                from(this.bookService.deleteBook(payload))
+                    .pipe(map((res: IGQLResponse) => {
+                        this.spinnerService.hide();
                         if (res.status === SUCCESS) {
                             this.alertService.showSuccess(res.message, ActionTypes.DELETE_BOOK);
                             return new DeleteBookSuccesAction(res.data);

@@ -27,6 +27,7 @@ export interface IAuthorResponse extends IBaseEntityResponse {
     biography: string,
     nationality: string,
     expertise: string,
+    image: string,
     books: IBookResponse
 }
 

@@ -1,3 +1,5 @@
+import { NzTableSize } from "ng-zorro-antd/table";
+
 /**
  * Model use to store the data model
  */
@@ -93,4 +95,40 @@ export interface ITokenResponse {
     role: Role;
     image: string;
     token: string;
+}
+
+export interface IStaticTable {
+    tableId?: any;
+    tableUuid?: any;
+    title?: any;
+    expand?: boolean;
+    bordered?: boolean,
+    size?: NzTableSize,
+    dataSource?: any[];
+    dataColumn?: IColumn[];
+    actionType?: any;
+    headerButton?: any;
+}
+
+export interface IColumn {
+    field?: any;
+    childe?: any;
+    header?: any;
+    type?: any;
+    showImg?: boolean;
+    subfield?: any;
+    color?: any;
+    compare?: any;
+    priority?: any;
+    status?: any; // this will check the status in the table for icon
+}
+
+
+// delete,update,subnode,more->dropdown
+export enum ActionType {
+    DELETE = 0,
+    ADD = 1,
+    EDIT = 2,
+    VIEW = 3,
+    RE_FRESH = 4
 }

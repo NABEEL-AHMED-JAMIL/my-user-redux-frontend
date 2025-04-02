@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 
-
+/**
+ * @author Nabeel Ahmed
+ */
 @Component({
     selector: 'cu-author',
     templateUrl: './cu-author.component.html',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { GraphqlService } from './graphql.service';
 import {
   IAuthorRequest,
@@ -198,7 +198,12 @@ export class AuthorService {
    * Test case status = pass
    */
   public getAuthor(id: String): Observable<IGQLResponse> {
-    return this.graphqlService.query(this.GET_AUTHOR, { id });
+    return this.graphqlService.query(this.GET_AUTHOR, { id }).pipe(
+      map(response => response?.data?.getAuthor || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -206,7 +211,12 @@ export class AuthorService {
    * Test case status = pass
    */
   public getAllAuthors(): Observable<IGQLResponse> {
-    return this.graphqlService.query(this.GET_ALL_AUTHORS);
+    return this.graphqlService.query(this.GET_ALL_AUTHORS).pipe(
+      map(response => response?.data?.getAllAuthors || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -214,7 +224,12 @@ export class AuthorService {
    * Test case status = pass
    */
   public fetchPublicAuthors(): Observable<IGQLResponse> {
-    return this.graphqlService.query(this.FETCH_PUBLIC_AUTHORS);
+    return this.graphqlService.query(this.FETCH_PUBLIC_AUTHORS).pipe(
+      map(response => response?.data?.fetchPublicAuthors || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -222,7 +237,12 @@ export class AuthorService {
    * Test case status = pending
    */
   public createAuthor(payload: IAuthorRequest): Observable<IGQLResponse> {
-    return this.graphqlService.mutate(this.CREATE_AUTHOR, { payload });
+    return this.graphqlService.mutate(this.CREATE_AUTHOR, { payload }).pipe(
+      map(response => response?.data?.createAuthor || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -230,7 +250,12 @@ export class AuthorService {
    * Test case satus = pending
    */
   public updateAuthor(payload: IAuthorRequest): Observable<IGQLResponse> {
-    return this.graphqlService.mutate(this.UPDATE_AUTHOR, { payload });
+    return this.graphqlService.mutate(this.UPDATE_AUTHOR, { payload }).pipe(
+      map(response => response?.data?.updateAuthor || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
   /**
@@ -238,7 +263,12 @@ export class AuthorService {
   * Test case status = pass
   */
   public deleteAuthor(id: String): Observable<IGQLResponse> {
-    return this.graphqlService.mutate(this.DELETE_AUTHOR, { id });
+    return this.graphqlService.mutate(this.DELETE_AUTHOR, { id }).pipe(
+      map(response => response?.data?.deleteAuthor || null),
+      catchError(error => {
+        console.error('GraphQL Error:', error);
+        return throwError(() => new Error(error.message || 'Something went wrong'));
+      }));
   }
 
 }

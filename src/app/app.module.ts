@@ -9,7 +9,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BidiModule } from '@angular/cdk/bidi';
 // applo
-import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';  
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -17,7 +17,10 @@ import { setContext } from '@apollo/client/link/context';
 // ng and other import module
 import { IconsProviderModule } from './icons-provider.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgZorroAntdModule } from './helpers';
+import {
+  NgZorroAntdModule,
+  SearchFilterPipe
+} from './helpers';
 // NgRx Modules
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
@@ -31,13 +34,18 @@ import {
   CuAuthorComponent,
   ListAuthorComponent,
   CuBookComponent,
-  ListBookComponent
+  ListBookComponent,
+  GenTableComponent
 } from './components/index';
 import { AuthEffects } from './store/effects/auth.effect';
+import { AuthorEffects } from './store/effects/author.effect';
+import { BookEffects } from './store/effects/book.effect';
+import { bookReducer } from './store/reducers/book.reducer';
+import { authorReducer } from './store/reducers/author.reducer';
 
 // appllo config
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
-  let currentUser: any = sessionStorage.getItem('current-user');
+  let currentUser: any = JSON.parse(sessionStorage.getItem('current-user'));
   const authLink = setContext(() => {
     return {
       headers: new HttpHeaders({
@@ -49,7 +57,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     link: authLink.concat(
       httpLink.create({
         uri: config.graphQLUrl
-    })),
+      })),
     cache: new InMemoryCache(),
   };
 };
@@ -62,7 +70,8 @@ export const APP_COMPONENT = [
   CuAuthorComponent,
   ListAuthorComponent,
   CuBookComponent,
-  ListBookComponent
+  ListBookComponent,
+  GenTableComponent
 ];
 
 /**
@@ -72,6 +81,7 @@ export const APP_COMPONENT = [
   declarations: [
     AppComponent,
     ...APP_COMPONENT,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -86,8 +96,16 @@ export const APP_COMPONENT = [
     BrowserAnimationsModule,
     IconsProviderModule,
     NgZorroAntdModule,
+    // Register reducers for feature states
     StoreModule.forRoot({}),
-    EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forFeature('bookReducer', bookReducer),  // Manages state for books
+    StoreModule.forFeature('authorReducer', authorReducer),  // Manages state for authors
+    // Register effects to handle side effects for each state
+    EffectsModule.forRoot([
+      AuthEffects,   // Handles authentication-related side effects
+      AuthorEffects, // Handles author-related side effects
+      BookEffects    // Handles book-related side effects
+    ]),
     // devtools
     StoreDevtoolsModule.instrument({
       maxAge: 25,

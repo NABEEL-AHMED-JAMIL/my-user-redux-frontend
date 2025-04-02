@@ -54,15 +54,6 @@ const routes: Routes = [
           breadcrumb: 'Authors',
           roles: [Role.ADMIN]
         }
-      },
-      {
-        path: 'publicbook',
-        component: ListBookComponent,
-        canActivate: [AuthGuard],
-        data: {
-          breadcrumb: 'Public Book',
-          roles: [Role.ADMIN, Role.USER]
-        }
       }
     ]
   },

@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -12,12 +11,14 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
@@ -27,67 +28,64 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzResultModule } from 'ng-zorro-antd/result';
-import { NzImageModule } from 'ng-zorro-antd/image';
-import { NzAlertModule } from 'ng-zorro-antd/alert';
-import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { NzStepsModule } from 'ng-zorro-antd/steps';
-import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
-import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
-import { NzPaginationModule } from 'ng-zorro-antd/pagination';
-import { NzCarouselModule } from 'ng-zorro-antd/carousel';
-import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+import { NzTransferModule } from 'ng-zorro-antd/transfer';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
 
+
+// npm install @kolkov/angular-editor --save
 /**
  * @author Nabeel Ahmed
  */
 @NgModule({
-  exports: [
-    NzMenuModule,
-    NzLayoutModule,
-    NzDropDownModule,
-    NzButtonModule,
-    NzGridModule,
-    NzBreadCrumbModule,
-    NzInputModule,
-    NzNotificationModule,
-    NzDrawerModule,
-    NzTableModule,
-    NzDividerModule,
-    NzFormModule,
-    NzTagModule,
-    NzPageHeaderModule,
-    NzDescriptionsModule,
-    NzPopconfirmModule,
-    NzUploadModule,
-    NzInputNumberModule,
-    NzListModule,
-    NzModalModule,
-    NzAvatarModule,
-    NzBadgeModule,
-    NzTabsModule,
-    NzEmptyModule,
-    NzSelectModule,
-    NzCardModule,
-    NzResultModule,
-    NzImageModule,
-    NzAlertModule,
-    NzSwitchModule,
-    NzToolTipModule,
-    NzStepsModule,
-    NzCommentModule,
-    NzCollapseModule,
-    NzPaginationModule,
-    NzSkeletonModule,
-    NzCarouselModule
-  ],
-  providers: [
-    {
-      provide: NZ_I18N,
-      useValue: en_US
-    }
-  ]
+    imports: [],
+    exports: [
+        NzMenuModule,
+        NzLayoutModule,
+        NzDropDownModule,
+        NzButtonModule,
+        NzGridModule,
+        NzBreadCrumbModule,
+        NzInputModule,
+        NzNotificationModule,
+        NzDrawerModule,
+        NzTableModule,
+        NzDividerModule,
+        NzFormModule,
+        NzAlertModule,
+        NzTagModule,
+        NzPageHeaderModule,
+        NzDescriptionsModule,
+        NzPopconfirmModule,
+        NzUploadModule,
+        NzInputNumberModule,
+        NzDatePickerModule,
+        NzListModule,
+        NzModalModule,
+        NzAvatarModule,
+        NzBadgeModule,
+        NzTabsModule,
+        NzEmptyModule,
+        NzSelectModule,
+        NzCardModule,
+        NzResultModule,
+        NzToolTipModule,
+        NzCollapseModule,
+        NzSwitchModule,
+        NzCheckboxModule,
+        NzImageModule,
+        NzStatisticModule,
+        NzTransferModule,
+        NzTypographyModule,
+        NzProgressModule
+    ],
+    providers: []
 })
 export class NgZorroAntdModule {
 

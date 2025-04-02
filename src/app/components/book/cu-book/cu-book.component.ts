@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 
-
+/**
+ * @author Nabeel Ahmed
+ */
 @Component({
     selector: 'cu-book',
     templateUrl: './cu-book.component.html',

@@ -44,8 +44,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.fb.group({
-            username: ['nabeel.amd93', [Validators.required]],
-            password: ['B@llistic1', [Validators.required]]
+            username: ['johndoe123', [Validators.required]],
+            password: ['SecureP@ss123', [Validators.required]]
         });
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/ql/mybook';

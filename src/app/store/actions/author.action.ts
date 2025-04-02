@@ -13,10 +13,6 @@ export const ActionTypes = {
     GET_ALL_AUTHORS: type('GET_ALL_AUTHORS'),
     GET_ALL_AUTHORS_SUCCESS: type('GET_ALL_AUTHORS_SUCCESS'),
     GET_ALL_AUTHORS_FAILED: type('GET_ALL_AUTHORS_FAILED'),
-    // FETCH PUBLIC AUTHORS
-    FETCH_PUBLIC_AUTHORS: type('FETCH_PUBLIC_AUTHORS'),
-    FETCH_PUBLIC_AUTHORS_SUCCESS: type('FETCH_PUBLIC_AUTHORS_SUCCESS'),
-    FETCH_PUBLIC_AUTHORS_FAILED: type('FETCH_PUBLIC_AUTHORS_FAILED'),
     // CREATE AUTHOR
     CREATE_AUTHOR: type('CREATE_AUTHOR'),
     CREATE_AUTHOR_SUCCESS: type('CREATE_AUTHOR_SUCCESS'),
@@ -52,7 +48,7 @@ export class GetAuthorFailedAction implements Action {
 // ##### GET_ALL_AUTHORS #####
 export class GetAllAuthorsAction implements Action {
     public readonly type = ActionTypes.GET_ALL_AUTHORS;
-    constructor(public payload: any) {}
+    constructor() {}
 }
 
 // ##### GET_ALL_AUTHORS_SUCCESS #####
@@ -64,24 +60,6 @@ export class GetAllAuthorsSuccesAction implements Action {
 // ##### GET_ALL_AUTHORS_FAILED #####
 export class GetAllAuthorsFailedAction implements Action {
     public readonly type = ActionTypes.GET_ALL_AUTHORS_FAILED;
-    constructor(public payload: any) {}
-}
-
-// ##### FETCH_PUBLIC_AUTHORS #####
-export class FetchPublicAuthorsAction implements Action {
-    public readonly type = ActionTypes.FETCH_PUBLIC_AUTHORS;
-    constructor(public payload: any) {}
-}
-
-// ##### FETCH_PUBLIC_AUTHORS_SUCCESS #####
-export class FetchPublicAuthorsSuccesAction implements Action {
-    public readonly type = ActionTypes.FETCH_PUBLIC_AUTHORS_SUCCESS;
-    constructor(public payload: any) {}
-}
-
-// ##### FETCH_PUBLIC_AUTHORS_FAILED #####
-export class FetchPublicAuthorsFailedAction implements Action {
-    public readonly type = ActionTypes.FETCH_PUBLIC_AUTHORS_FAILED;
     constructor(public payload: any) {}
 }
 
@@ -145,9 +123,6 @@ export type Actions = GetAuthorAction
     | GetAllAuthorsAction
     | GetAllAuthorsSuccesAction
     | GetAllAuthorsFailedAction
-    | FetchPublicAuthorsAction
-    | FetchPublicAuthorsSuccesAction
-    | FetchPublicAuthorsFailedAction
     | CreateAuthorAction
     | CreateAuthorSuccesAction
     | CreateAuthorFailedAction

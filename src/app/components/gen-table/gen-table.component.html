@@ -1,0 +1,93 @@
+<div nz-row *ngIf="staticTable">
+    <div nz-col [nzSpan]="8">
+        <input nz-input [(ngModel)]="searchDetails" placeholder="Search Result" />
+    </div>
+    <div nz-col [nzSpan]="16" style="text-align: end;">
+        <!-- more action -->
+        <nz-button-group *ngIf="isDateFilter">
+            <nz-form-control>
+                <input nz-input type="date"
+                    [(ngModel)]="startDate"
+                    (change)="onDateChangeEvent()" />
+            </nz-form-control> &nbsp;
+            <nz-form-control>
+                <input nz-input type="date"
+                    [(ngModel)]="endDate"
+                    (change)="onDateChangeEvent()" />
+            </nz-form-control>
+        </nz-button-group>&nbsp;
+        <nz-button-group>
+            <button *ngFor='let button of staticTable.headerButton'
+                nz-button nz-tooltip nzType="default"
+                nzTooltipTitle="{{ button?.tooltipTitle }}"
+                (click)="buttonEvent(button.action)">
+                <span nz-icon nzTheme="outline"
+                    [nzType]="button.type"
+                    [nzSpin]="button.spin"
+                    [ngStyle]="{'color': button.color}">
+                </span>
+            </button>
+        </nz-button-group>
+    </div>
+</div>
+<!-- <nz-divider style="margin: 5px 0;"></nz-divider> -->
+<nz-table #dynamicTable 
+    [id]="staticTable.tableId"
+    [nzSize]="staticTable.size"
+    [nzBordered]="staticTable.bordered"
+    [nzNoResult]="'No Data'"
+    [nzData]="staticTable.dataSource"
+    [nzPaginationType]="'small'"
+    [nzPaginationPosition]="'bottom'"
+    [nzShowSizeChanger]='true'
+    [nzPageSize]="15"
+    [nzPageSizeOptions]="[15,30,50]"
+    [nzFrontPagination]="true"
+    [nzShowPagination]="true"
+    (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+    class="table-setting"
+    style="margin: 5px 0;">
+    <thead>
+        <tr>
+            <th>#</th>
+            <ng-container *ngFor='let col of staticTable.dataColumn'>
+                <th *ngIf="col.type === 'date' || col.type === 'data' || col.type === 'tag'"
+                    style="text-align: center;">
+                    {{col.header}}
+                </th>
+            </ng-container>
+            <th *ngIf="staticTable.actionType" 
+                style="width: 1px;text-align: center;">
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let row of dynamicTable.data | searchdata: searchDetails;let i = index;'>
+            <td style="text-align: center;width: 1px;">{{i+1}}</td>
+            <ng-container *ngFor='let col of staticTable.dataColumn'>
+                <td *ngIf="col.type === 'date'" style="text-align: center;width: 1px;">
+                    {{row[col.field] | date:'yyyy-MM-dd'}}
+                </td>
+                <td *ngIf="col.type === 'data'">
+                    {{row[col.field]}}
+                </td>
+                <td *ngIf="col.type === 'tag'">
+                    {{row[col.field].name}}
+                </td>
+            </ng-container>
+            <td *ngIf="(staticTable.actionType)">
+                <ng-container *ngFor='let action of staticTable.actionType'>
+                    <a [routerLink]=""
+                        nz-tooltip
+                        nzTooltipTitle="{{ action?.tooltipTitle }}"
+                        (click)="actionEvent(action.action, row)">
+                        <span nz-icon [nzType]="action.type" 
+                            nzTheme="outline" 
+                            [ngStyle]="{'color': action.color}"></span>
+                    </a>&nbsp;
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

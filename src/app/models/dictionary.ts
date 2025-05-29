@@ -1,5 +1,6 @@
 import { IKV } from './base';
 
+
 export class Dictionary {
 
     private items: { [key: string]: IKV[] } = {}; // Stores arrays of IKV values by key

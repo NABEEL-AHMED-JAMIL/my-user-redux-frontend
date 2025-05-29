@@ -14,6 +14,9 @@ import { first } from 'rxjs';
 import { EChartsOption } from 'echarts';
 
 
+/**
+ * @author Nabeel Ahmed
+ */
 @Component({
     selector: 'dashboard',
     templateUrl: './dashboard.component.html',

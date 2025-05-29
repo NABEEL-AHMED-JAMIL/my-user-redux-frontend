@@ -40,53 +40,56 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 // npm install @kolkov/angular-editor --save
 
+/**
+ * @author Nabeel Ahmed
+ */
 @NgModule({
-  exports: [
-    NzMenuModule,
-    NzLayoutModule,
-    NzDropDownModule,
-    NzButtonModule,
-    NzGridModule,
-    NzBreadCrumbModule,
-    NzInputModule,
-    NzNotificationModule,
-    NzDrawerModule,
-    NzTableModule,
-    NzDividerModule,
-    NzFormModule,
-    NzTagModule,
-    NzPageHeaderModule,
-    NzDescriptionsModule,
-    NzPopconfirmModule,
-    NzUploadModule,
-    NzInputNumberModule,
-    NzListModule,
-    NzModalModule,
-    NzAvatarModule,
-    NzBadgeModule,
-    NzTabsModule,
-    NzEmptyModule,
-    NzSelectModule,
-    NzCardModule,
-    NzResultModule,
-    NzImageModule,
-    NzAlertModule,
-    NzSwitchModule,
-    NzToolTipModule,
-    NzStepsModule,
-    NzCommentModule,
-    NzDatePickerModule,
-    NzCollapseModule,
-    NzPaginationModule,
-    NzSkeletonModule,
-    NzCarouselModule
-  ],
-  providers: [
-    {
-      provide: NZ_I18N,
-      useValue: en_US
-    }
-  ]
+    exports: [
+        NzMenuModule,
+        NzLayoutModule,
+        NzDropDownModule,
+        NzButtonModule,
+        NzGridModule,
+        NzBreadCrumbModule,
+        NzInputModule,
+        NzNotificationModule,
+        NzDrawerModule,
+        NzTableModule,
+        NzDividerModule,
+        NzFormModule,
+        NzTagModule,
+        NzPageHeaderModule,
+        NzDescriptionsModule,
+        NzPopconfirmModule,
+        NzUploadModule,
+        NzInputNumberModule,
+        NzListModule,
+        NzModalModule,
+        NzAvatarModule,
+        NzBadgeModule,
+        NzTabsModule,
+        NzEmptyModule,
+        NzSelectModule,
+        NzCardModule,
+        NzResultModule,
+        NzImageModule,
+        NzAlertModule,
+        NzSwitchModule,
+        NzToolTipModule,
+        NzStepsModule,
+        NzCommentModule,
+        NzDatePickerModule,
+        NzCollapseModule,
+        NzPaginationModule,
+        NzSkeletonModule,
+        NzCarouselModule
+    ],
+    providers: [
+      {
+          provide: NZ_I18N,
+          useValue: en_US
+      }
+    ]
 })
 export class NgZorroAntdModule {
 

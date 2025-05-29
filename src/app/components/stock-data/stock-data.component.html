@@ -29,7 +29,8 @@
                     class="table-setting">
                     <tbody>
                         <tr *ngFor="let file of processedFile?.data">
-                            <td (click)="viewStockStatistics(file)">
+                            <td (click)="viewStockStatistics(file)"
+                                [ngClass]="{'selected-td': file === selectedFile}">
                                 {{file.segmentPath}}
                             </td>
                         </tr>
@@ -88,7 +89,7 @@
                     style="float: right;">
                     <option value="statistics">Statistics</option>
                     <option value="text">Text</option>
-                    <option value="ai_reviwe">AI Reviwe</option>
+                    <option value="ai_reviwe">Stock AI</option>
                 </select>
             </h4>
             <hr>

@@ -6,7 +6,9 @@ import { first } from 'rxjs';
 import {Location} from '@angular/common';
 import { config } from '../../../environments/environment';
 
-
+/**
+ * @author Nabeel Ahmed
+ */
 @Component({
     selector: 'file-view-list',
     templateUrl: './file-view-list.component.html',

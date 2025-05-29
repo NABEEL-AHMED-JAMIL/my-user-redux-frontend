@@ -5,7 +5,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { ApiCode, ApiResponse, IKV } from '../models';
 import { AlertService, SpinnerService } from '../helpers';
 
-
+/**
+ * @author Nabeel Ahmed
+ */
 @Injectable({
     providedIn: 'root'
 })

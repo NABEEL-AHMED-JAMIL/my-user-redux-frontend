@@ -4,7 +4,9 @@ import { ApiResponse, IKV } from '../models';
 import { config } from '../../environments/environment';
 import { ApiService } from '.';
 
-
+/**
+ * @author Nabeel Ahmed
+ */
 @Injectable({
     providedIn: 'root'
 })

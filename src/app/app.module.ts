@@ -13,56 +13,59 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { IconsProviderModule } from './icons-provider.module';
 import { HttpClientModule } from '@angular/common/http';
 import {
-  NgZorroAntdModule,
-  AppDashboardThemeService
+    NgZorroAntdModule,
+    AppDashboardThemeService
 } from './helpers';
 // compoent
 import {
-  DashboardComponent,
-  StockDataComponent,
-  FileViewListComponent
+    DashboardComponent,
+    StockDataComponent,
+    FileViewListComponent
 } from './components/index';
 
 // load tham on APP_INITIALIZER
 export function loadThemeFactory(appDashboardThemeService: AppDashboardThemeService) {
-  return () => appDashboardThemeService.loadTheme();
+    return () => appDashboardThemeService.loadTheme();
 }
 
+/**
+ * @author Nabeel Ahmed
+ */
 export const APP_COMPONENT = [
-  SpinnerComponent,
-  DashboardComponent,
-  StockDataComponent,
-  FileViewListComponent
+    SpinnerComponent,
+    DashboardComponent,
+    StockDataComponent,
+    FileViewListComponent
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ...APP_COMPONENT,
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule,
-    CommonModule,
-    AppRoutingModule,
-    FormsModule,
-    BidiModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    IconsProviderModule,
-    NgZorroAntdModule,
-    // Other modules
-    NgxEchartsModule.forRoot({ echarts: () => import('echarts') })
-  ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: loadThemeFactory,
-      deps: [AppDashboardThemeService],
-      multi: true
-    },
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ...APP_COMPONENT,
+    ],
+    imports: [
+        BrowserModule,
+        RouterModule,
+        CommonModule,
+        AppRoutingModule,
+        FormsModule,
+        BidiModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        IconsProviderModule,
+        NgZorroAntdModule,
+        // Other modules
+        NgxEchartsModule.forRoot({ echarts: () => import('echarts') })
+    ],
+    providers: [
+      {
+          provide: APP_INITIALIZER,
+          useFactory: loadThemeFactory,
+          deps: [AppDashboardThemeService],
+          multi: true
+      },
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

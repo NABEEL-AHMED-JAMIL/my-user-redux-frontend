@@ -5,6 +5,9 @@ import { StockDataService } from '../../services';
 import { first } from 'rxjs';
 import { EChartsOption } from 'echarts';
 
+/**
+ * @author Nabeel Ahmed
+ */
 @Component({
     selector: 'stock-data',
     templateUrl: './stock-data.component.html',
@@ -16,6 +19,7 @@ export class StockDataComponent implements OnInit {
     public page: number = 1;
     public pageSize: number = 10000;
     // data payload
+    public selectedFile: any;
     public fileInfos: IFileInfo[] = [];
     // stock data
     public selectedRow: any;
@@ -80,6 +84,7 @@ export class StockDataComponent implements OnInit {
     }
 
     public viewStockStatistics(fileInfo: IFileInfo): void {
+        this.selectedFile = fileInfo;
         let payload: IKV[] = [
             {
                 key: 'fileId',

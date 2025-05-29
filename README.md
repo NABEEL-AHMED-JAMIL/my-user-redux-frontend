@@ -1,35 +1,51 @@
-# Project Name [my-user-redux-frontend]
+## Overview: Processing Stock Data with RAG and OpenAI
 
-## Overview
+This project implements a Retrieval-Augmented Generation (RAG) approach to process and analyze stock data using OpenAI.
 
-This repository contains two main branches:
-- **main & my-user-redux-frontend-api**: Implements a simple REST service.
-- **my-user-redux-frontend-graphql**: Implements a GraphQL service.
+### What is RAG?
 
-## Branches
+RAG combines **retrieval** of relevant data with **generation** of natural language responses. Instead of relying solely on pretrained models, it retrieves contextually relevant stock data to provide accurate and informed answers.
 
-### 1) main & my-user-redux-frontend-api
+### How It Works
 
-The `main & my-user-redex-api` branch contains the implementation of a simple REST service. This branch is suitable for those who are looking for a straightforward example of a RESTful API. 
+1. **Upload Stock Data**
 
-Key Features:
-- Basic RESTful API endpoints.
-- Example of CRUD operations.
-- Suitable for beginners and those who need a quick setup for REST services.
+   Users upload stock data files (CSV, Parquet formats).
 
-### 2) my-user-redux-frontend-graphql
+2. **Data Processing**
 
-The `my-user-redux-frontend-graphql` branch contains the implementation of a GraphQL service. This branch is aimed at those who are interested in using GraphQL for their APIs. 
+   The system parses the files and extracts meaningful financial data.
 
-Key Features:
-- Implementation of GraphQL queries and mutations.
-- Example of integrating GraphQL with a database.
-- Suitable for those who want to explore the advantages of using GraphQL over REST.
+3. **Vector Embedding**
 
-## Getting Started
+   Extracted data points are converted into vector embeddings using OpenAI embedding models.
 
-To get started with this repository, follow the instructions below for the branch you are interested in.
+4. **Vector Storage**
 
-### Cloning the Repository
+   These embeddings are stored in a vector database for efficient similarity search.
 
-Clone the repository to your local machine:
+5. **Query & Retrieval**
+
+   User queries are transformed into embeddings and used to retrieve the most relevant stock data vectors.
+
+6. **Answer Generation**
+
+   The retrieved data is passed as context to OpenAI’s GPT model, which generates detailed, context-aware natural language responses.
+
+### Benefits
+
+- Provides accurate and up-to-date insights based on real stock data.
+- Supports complex user queries leveraging vector similarity search.
+- Flexible and scalable for various stock data formats and volumes.
+
+### Technologies Used
+
+- Angular (Frontend UI)
+- Spring Boot (Backend processing)
+- OpenAI API (Embeddings and GPT generation)
+- PostgreSQL + pgvector (Vector database)
+- CSV and Parquet parsers
+
+---
+
+Feel free to reach out if you need assistance setting up the data pipeline or integrating the OpenAI API.

@@ -1,35 +1,38 @@
 import { NgModule } from '@angular/core';
 import { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';
 import {
-  MenuFoldOutline,
-  MenuUnfoldOutline,
-  FormOutline,
-  DashboardOutline,
-  UserOutline,
-  SettingOutline,
-  FileAddOutline,
-  FileSearchOutline,
-  CloseCircleOutline
+    MenuFoldOutline,
+    MenuUnfoldOutline,
+    FormOutline,
+    DashboardOutline,
+    UserOutline,
+    SettingOutline,
+    FileAddOutline,
+    FileSearchOutline,
+    CloseCircleOutline
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
-  MenuFoldOutline,
-  MenuUnfoldOutline,
-  DashboardOutline,
-  FormOutline,
-  UserOutline,
-  SettingOutline,
-  FileAddOutline,
-  FileSearchOutline,
-  CloseCircleOutline
+    MenuFoldOutline,
+    MenuUnfoldOutline,
+    DashboardOutline,
+    FormOutline,
+    UserOutline,
+    SettingOutline,
+    FileAddOutline,
+    FileSearchOutline,
+    CloseCircleOutline
 ];
 
+/**
+ * @author Nabeel Ahmed
+ */
 @NgModule({
-  imports: [NzIconModule],
-  exports: [NzIconModule],
-  providers: [
-    { provide: NZ_ICONS, useValue: icons }
-  ]
+    imports: [NzIconModule],
+    exports: [NzIconModule],
+    providers: [
+      { provide: NZ_ICONS, useValue: icons }
+    ]
 })
 export class IconsProviderModule {
 }

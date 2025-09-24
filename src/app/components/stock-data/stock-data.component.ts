@@ -1,9 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertService, AppDashboardThemeService, CommonService } from '../../helpers';
-import { ApiCode, IFileInfo, IKV, FileStatus, IStockData } from '../../models';
+import {
+    AlertService,
+    CommonService,
+    AppDashboardThemeService
+} from '../../helpers';
+import {
+    ApiCode,
+    IFileInfo,
+    IKV,
+    FileStatus,
+    IStockData,
+    IAskQuestion
+} from '../../models';
 import { StockDataService } from '../../services';
 import { first } from 'rxjs';
 import { EChartsOption } from 'echarts';
+
 
 /**
  * @author Nabeel Ahmed
@@ -21,6 +33,10 @@ export class StockDataComponent implements OnInit {
     // data payload
     public selectedFile: any;
     public fileInfos: IFileInfo[] = [];
+    // ask questions
+    public aiResponse: any = ' ';
+    public selectedPrompt: IAskQuestion;
+    public questions: IAskQuestion[] = [];
     // stock data
     public selectedRow: any;
     public fileInfo: IFileInfo;
@@ -44,6 +60,16 @@ export class StockDataComponent implements OnInit {
 
     ngOnInit() {
         this.fetchFileListByDateAndFileStatus();
+        this.fetchAllActiveAskQuestions()
+    }
+
+    public fetchAllActiveAskQuestions(): void {
+        this.stockDataService.fetchAllActiveAskQuestions().pipe(first())
+            .subscribe((response: any) =>
+                this.handleApiResponse(response, () => {
+                    this.questions = response.data;
+                })
+            );
     }
 
     public refreshEvent(): any {
@@ -134,6 +160,23 @@ export class StockDataComponent implements OnInit {
 
     public onActionChange(event: Event): void {
         this.selectedOption = (event.target as HTMLSelectElement).value;
+    }
+
+    public onPromptChange(event: any): void {
+        this.selectedPrompt = event;
+        let payload: IKV[] = [
+            {
+                key: 'question',
+                value: this.selectedPrompt
+            }
+        ];
+        this.stockDataService.sendAskQuestion(payload)
+            .pipe(first())
+            .subscribe((response: any) =>
+                this.handleApiResponse(response, () => {
+                    this.aiResponse = response.data;
+                })
+            );
     }
 
     private handleApiResponse(response: any, successCallback: Function): void {

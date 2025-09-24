@@ -107,7 +107,19 @@
                 </p>
             </div>
             <div *ngIf="selectedOption === 'ai_reviwe'">
-                pa
+                <div style="margin-bottom: 8px; width: 100%;">
+                    <label for="promptSelect">Select AskQuestion :</label>
+                    <select id="promptSelect" nz-select [(ngModel)]="selectedPrompt"
+                        (ngModelChange)="onPromptChange($event)"
+                        style="width: 100%;">
+                        <option *ngFor="let prompt of questions" [ngValue]="prompt">
+                            {{prompt.question}}
+                        </option>
+                    </select>
+                </div>
+                <div *ngIf="aiResponse" class="scrollable-container-v2">
+                    {{ aiResponse }}
+                </div>
             </div>
         </div>
     </nz-col>

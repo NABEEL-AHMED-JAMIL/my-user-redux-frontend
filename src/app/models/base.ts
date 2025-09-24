@@ -37,6 +37,15 @@ export interface IFileInfo {
     dateCreated?: any;
 }
 
+export interface IAskQuestion {
+    id?: any;
+    question?: string;
+    answer?: string;
+    status?: Status;
+    dateCreated?: any;
+    dateUpdated?: any;
+}
+
 export interface IStockData {
     dataView: IDataView;
 }

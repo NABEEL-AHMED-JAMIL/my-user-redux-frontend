@@ -41,7 +41,14 @@ export class StockDataService {
     public fetchProcessFileByStatus(payload: IKV[]): Observable<ApiResponse> {
         return this.apiService.getData(`${config.apiBaseUrl}/stock-dashboard.json/fetchProcessFileByStatus`, this.apiService.getHttpParams(payload));
     }
-    
-    
+
+    public fetchAllActiveAskQuestions(): Observable<ApiResponse> {
+        return this.apiService.getData(`${config.apiBaseUrl}/stock-dashboard.json/fetchAllActiveAskQuestions`);
+    }
+
+    public sendAskQuestion(payload: IKV[]): Observable<ApiResponse> {
+        return this.apiService.postData(`${config.apiBaseUrl}/stock-dashboard.json/sendAskQuestion`, payload);
+    }
+
 }
 

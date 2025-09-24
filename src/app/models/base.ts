@@ -8,6 +8,14 @@ export interface ApiResponse {
     paging?: any;
 }
 
+export interface AskQuestion {
+    id: any;
+    question: any;
+    category: any;
+    isActive: any;
+    sourceType: any;
+}
+
 export interface AuditLog {
     id: any;
     fileInfo: any;

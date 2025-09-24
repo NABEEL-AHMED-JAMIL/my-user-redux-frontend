@@ -1,6 +1,6 @@
-## Overview: Processing Stock Data with RAG and OpenAI
+## Overview: Processing Stock Data with RAG and Ollma3
 
-This project implements a Retrieval-Augmented Generation (RAG) approach to process and analyze stock data using OpenAI.
+This project implements a Retrieval-Augmented Generation (RAG) approach to process and analyze stock data using Ollma3.
 
 ### What is RAG?
 
@@ -18,7 +18,7 @@ RAG combines **retrieval** of relevant data with **generation** of natural langu
 
 3. **Vector Embedding**
 
-   Extracted data points are converted into vector embeddings using OpenAI embedding models.
+   Extracted data points are converted into vector embeddings using Ollma3 embedding models.
 
 4. **Vector Storage**
 
@@ -42,7 +42,7 @@ RAG combines **retrieval** of relevant data with **generation** of natural langu
 
 - Angular (Frontend UI)
 - Spring Boot (Backend processing)
-- OpenAI API (Embeddings and GPT generation)
+- Ollma3 API (Embeddings and GPT generation)
 - PostgreSQL + pgvector (Vector database)
 - CSV and Parquet parsers
 
